@@ -1,0 +1,11 @@
+[build]
+  publish = "frontend"
+  command = "node scripts/migrate-to-frontend.mjs"
+
+[[redirects]]
+  from = "/wp/*"
+  to = "/:splat"
+  status = 301
+
+[build.environment]
+  NODE_VERSION = "20"

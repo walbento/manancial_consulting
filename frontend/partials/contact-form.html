@@ -1,0 +1,22 @@
+<form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/obrigado/" class="wpcf7-form">
+  <input type="hidden" name="form-name" value="contact">
+  <p class="hidden"><label>Não preencher: <input name="bot-field"></label></p>
+  <div class="row">
+    <input type="text" name="nome" placeholder="o seu nome" required maxlength="400">
+  </div>
+  <div class="row">
+    <input type="email" name="email" placeholder="o seu email" required maxlength="400">
+  </div>
+  <div class="row">
+    <input type="text" name="assunto" placeholder="assunto" required maxlength="400">
+  </div>
+  <div class="row">
+    <textarea name="mensagem" placeholder="mensagem" rows="6" maxlength="2000"></textarea>
+  </div>
+  <div class="row">
+    <label><input type="checkbox" name="aceite-termos" value="sim" required> Aceito os Termos &amp; Condições e Política de Privacidade</label>
+  </div>
+  <div class="row">
+    <input type="submit" value="Enviar">
+  </div>
+</form>

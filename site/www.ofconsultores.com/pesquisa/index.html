@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pesquisa – OFCONSULTORES</title>
+  <link rel="stylesheet" href="/wp-content/cache/autoptimize/css/autoptimize_single_4d1600db498d1c7b11e6ed172102f539.css">
+  <style>
+    body { font-family: Roboto, sans-serif; margin: 0; background: #f5f5f5; color: #333; }
+    .wrap { max-width: 900px; margin: 0 auto; padding: 48px 20px; }
+    h1 { margin-bottom: 24px; }
+    .result { background: #fff; padding: 16px 20px; margin-bottom: 12px; border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,.08); }
+    .result a { color: #c9a227; text-decoration: none; font-weight: 500; }
+    .result p { margin: 8px 0 0; font-size: 14px; line-height: 1.5; }
+    .back { display: inline-block; margin-bottom: 24px; color: #666; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <a class="back" href="/">← Voltar ao início</a>
+    <h1>Resultados da pesquisa</h1>
+    <div id="results"></div>
+  </div>
+  <script>
+    (async function () {
+      const params = new URLSearchParams(window.location.search);
+      const q = (params.get('q') || '').toLowerCase().trim();
+      const container = document.getElementById('results');
+      if (!q) {
+        container.innerHTML = '<p>Introduza um termo de pesquisa.</p>';
+        return;
+      }
+      const res = await fetch('/search-index.json');
+      const pages = await res.json();
+      const hits = pages.filter((p) =>
+        (p.title + ' ' + p.excerpt).toLowerCase().includes(q)
+      );
+      if (!hits.length) {
+        container.innerHTML = '<p>Nenhum resultado para <strong>' + q + '</strong>.</p>';
+        return;
+      }
+      container.innerHTML = hits.map((p) =>
+        '<div class="result"><a href="' + p.url + '">' + p.title + '</a><p>' + p.excerpt.slice(0, 180) + '…</p></div>'
+      ).join('');
+    })();
+  </script>
+  <script src="/static-fixes.js" defer></script>
+</body>
+</html>

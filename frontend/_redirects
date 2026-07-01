@@ -1,0 +1,10 @@
+# Pretty URLs without trailing slash
+/consultoria  /consultoria/  301
+/formacao  /formacao/  301
+/ofconsultores  /ofconsultores/  301
+/clientes  /clientes/  301
+/publicacoes  /publicacoes/  301
+/recrutamento-selecao  /recrutamento-selecao/  301
+/contatos  /contatos/  301
+/politica-de-privacidade  /politica-de-privacidade/  301
+/termos-condicoes  /termos-condicoes/  301

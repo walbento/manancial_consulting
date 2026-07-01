@@ -1,0 +1,13 @@
+{
+  "site_name": "OFCONSULTORES",
+  "tagline": "Formação e Consultoria",
+  "email": "geral@ofconsultores.com",
+  "phone_primary": "(+351) 217 540 451",
+  "phone_secondary": "(+351) 963 009 977",
+  "address": "Rua Fernando Lopes Graça 15A, 1600-067 LISBOA",
+  "facebook": "https://www.facebook.com/ofconsultores/",
+  "instagram": "https://www.instagram.com/ofconsultores/",
+  "linkedin": "https://www.linkedin.com/company/ofconsultores",
+  "logo": "/wp-content/uploads/2025/05/logo-cor-editado-3.png",
+  "api_base": "/api"
+}

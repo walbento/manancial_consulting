@@ -1,0 +1,29 @@
+.container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--spacing-sm);
+}
+
+.site-header-placeholder,
+.site-footer-placeholder {
+  min-height: 1px;
+}
+
+#site-header[data-loading="true"],
+#site-footer[data-loading="true"] {
+  opacity: 0.6;
+}
+
+.pearl_arrow_top {
+  cursor: pointer;
+}
+
+@media (max-width: 991px) {
+  .stm-header .stm-navigation {
+    display: none;
+  }
+
+  .stm-header .stm_mobile__switcher {
+    display: flex;
+  }
+}

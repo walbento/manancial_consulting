@@ -1,0 +1,20 @@
+{
+  "name": "manancial_consulting",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "mirror": "node mirror.mjs",
+    "migrate": "node scripts/migrate-to-frontend.mjs",
+    "build": "node scripts/migrate-to-frontend.mjs",
+    "assets": "node scripts/fetch-assets.mjs",
+    "dev": "npm run build && npx serve frontend"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "website-scraper": "^6.0.0"
+  }
+}
