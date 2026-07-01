@@ -2,8 +2,8 @@
 
 Site estático da **Manancial Consulting** (assessoria financeira, auditoria e contabilidade), baseado em HTML, CSS e JavaScript, com deploy na **Netlify**.
 
-> **Fase actual:** front-office estático  
-> **Fase futura:** backoffice em PHP + PostgreSQL (`backend/`)
+> **Front end:** Html, CSS, JS  
+> **Back end:** backoffice em PHP + PostgreSQL (`backend/`)
 
 ---
 
@@ -106,41 +106,6 @@ Se não vires alterações, faz hard refresh: `Cmd+Shift+R` (Mac) ou `Ctrl+Shift
 
 ---
 
-## Paleta de cores (Manancial)
-
-| Cor | Hex | Uso |
-|-----|-----|-----|
-| Azul escuro | `#0A2540` | Header, footer |
-| Azul | `#0f3b5c` | Botões |
-| Dourado | `#C7A05E` | Destaques, links |
-| Texto | `#1F2A44` | Corpo |
-| Texto secundário | `#5A6B7F` | Subtítulos |
-| Fundo claro | `#F8F9FC` | Secções |
-
-Referência: [manancialconsulting.ao](https://manancialconsulting.ao/)
-
----
-
-## Deploy na Netlify
-
-1. Ligar o repositório Git à Netlify
-2. A Netlify lê o `netlify.toml`:
-   - **Publish directory:** `frontend`
-   - **Build command:** `node scripts/migrate-to-frontend.mjs`
-3. Cada push na branch principal faz deploy automático
-
-### Domínio customizado
-
-Netlify Dashboard → **Domain management** → adicionar domínio e configurar DNS.
-
-### Formulários
-
-1. Fazer deploy inicial (a Netlify detecta os forms no HTML)
-2. **Site configuration → Forms → Form notifications**
-3. Adicionar email: `geral@manancialconsulting.ao`
-
----
-
 ## Fluxo de trabalho da equipa
 
 ### Alterar textos ou contactos
@@ -163,17 +128,6 @@ Netlify Dashboard → **Domain management** → adicionar domínio e configurar 
 
 ---
 
-## API (fase futura — PHP)
-
-O ficheiro `frontend/js/api.js` lê JSON local (`USE_LOCAL_DATA = true`).
-
-Quando o backend PHP estiver pronto:
-
-1. Implementar endpoints em `backend/public/api/`
-2. Em `api.js`, mudar `USE_LOCAL_DATA` para `false`
-3. Ver contrato da API em `backend/README.md`
-
----
 
 ## Resolução de problemas
 
