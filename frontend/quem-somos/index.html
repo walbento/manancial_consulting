@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quem Somos — AON Manancial Consulting</title>
+<meta name="description" content="Conheça a AON Manancial Consulting — a nossa missão, os nossos valores e a equipa que trabalha diariamente para criar valor nas organizações angolanas.">
+<link rel="stylesheet" href="/css/pages/home.css">
+<link rel="icon" href="/assets/images/logo-manancial.png" type="image/png">
+<style>
+  /* ---- Quem Somos: estilos específicos ---- */
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+  .about-text h2{font-size:clamp(2rem,3.8vw,3rem);margin-bottom:24px}
+  .about-text p{color:var(--ink-soft);font-size:1.05rem;line-height:1.8;margin-bottom:18px}
+  .about-text p:last-child{margin-bottom:0}
+  .about-visual{position:relative}
+  .about-visual-inner{
+    background:linear-gradient(150deg,#0c2440 0%,#123a5e 60%,#0a1e37 100%);
+    border-radius:3px;padding:56px 48px;color:var(--white);
+  }
+  .about-stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:36px;margin-top:36px}
+  .about-stat b{font-family:'Cormorant Garamond',serif;font-size:3rem;font-weight:600;color:var(--gold-soft);display:block;line-height:1}
+  .about-stat span{font-size:.86rem;color:rgba(255,255,255,.7);margin-top:8px;display:block}
+  .about-visual-inner p{color:rgba(255,255,255,.75);font-size:1rem;line-height:1.7;margin-bottom:0}
+
+  .values-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:rgba(18,58,94,.1);border:1px solid rgba(18,58,94,.1)}
+  .value-card{background:var(--white);padding:48px 40px;transition:background .35s}
+  .value-card:hover{background:var(--paper)}
+  .value-icon{width:48px;height:48px;border-radius:50%;background:var(--mist);display:flex;align-items:center;justify-content:center;margin-bottom:28px;transition:background .35s}
+  .value-card:hover .value-icon{background:var(--navy);color:var(--white)}
+  .value-icon svg{width:22px;height:22px;stroke:var(--navy);stroke-width:1.4;fill:none;transition:stroke .35s}
+  .value-card:hover .value-icon svg{stroke:var(--gold-soft)}
+  .value-card h3{font-size:1.38rem;margin-bottom:12px}
+  .value-card p{color:var(--ink-soft);font-size:.95rem;line-height:1.7}
+
+  .mission-band{background:linear-gradient(150deg,#0c2440 0%,#123a5e 55%,#0a1e37 100%);padding:100px 0}
+  .mission-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+  .mission-inner h2{color:var(--white);font-size:clamp(2rem,3.6vw,2.8rem);margin-bottom:24px}
+  .mission-inner p{color:rgba(255,255,255,.75);font-size:1.02rem;line-height:1.8}
+  .mission-items{display:flex;flex-direction:column;gap:28px}
+  .mission-item{display:flex;gap:20px;align-items:flex-start}
+  .mission-num{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:600;color:var(--gold-soft);line-height:1;flex-shrink:0;width:36px}
+  .mission-item h4{color:var(--white);font-family:'Inter',sans-serif;font-size:.82rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;margin-bottom:8px}
+  .mission-item p{color:rgba(255,255,255,.68);font-size:.95rem;line-height:1.7;margin:0}
+
+  .cta-strip{padding:100px 0;text-align:center}
+  .cta-strip h2{font-size:clamp(2rem,3.6vw,2.9rem);margin-bottom:18px}
+  .cta-strip p{color:var(--ink-soft);font-size:1.05rem;max-width:540px;margin:0 auto 40px}
+  .cta-actions{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+
+  @media(max-width:960px){
+    .about-grid{grid-template-columns:1fr;gap:48px}
+    .values-grid{grid-template-columns:1fr 1fr}
+    .mission-inner{grid-template-columns:1fr;gap:48px}
+    .about-visual-inner{padding:40px 32px}
+    .mission-band{padding:72px 0}
+  }
+  @media(max-width:640px){
+    .values-grid{grid-template-columns:1fr}
+    .about-stat-grid{grid-template-columns:1fr 1fr}
+    .about-visual-inner{padding:30px 22px}
+    .about-stat b{font-size:2.4rem}
+    .value-card{padding:36px 28px}
+    .mission-item{gap:14px}
+    .mission-num{font-size:1.6rem;width:28px}
+    .cta-actions{flex-direction:column;align-items:center}
+    .cta-actions .btn{width:100%;justify-content:center}
+    .mission-band{padding:56px 0}
+  }
+  @media(max-width:400px){
+    .about-stat-grid{grid-template-columns:1fr 1fr;gap:20px}
+  }
+</style>
+<style>/* mc-shell-v2 */
+/* Páginas internas — esconder elementos WordPress */
+.stm-header,.stm-footer,.stm-header__overlay,.pearl_arrow_top,#searchModal{display:none!important}
+#wrapper{padding:0!important}
+/* Neutralizar Bootstrap/Pearl: repor base tipográfica Manancial */
+html{font-size:16px!important}
+body{font-size:16px!important;font-family:'Inter',sans-serif!important;line-height:1.6!important;color:#142433!important;background:#fff!important}
+/* Links — evitar azul Bootstrap dentro do rodapé */
+footer a{color:rgba(255,255,255,.62)!important}
+footer a:hover{color:#d9c398!important}
+footer ul li{color:rgba(255,255,255,.62)!important}
+/* Tipografia do conteúdo interno */
+.site-content{font-family:"Inter",sans-serif;color:#1a2235;padding:48px 32px 80px;max-width:1240px;margin:0 auto}
+.site-content h1,.site-content h2,.site-content h3,.site-content h4,
+.site-content .stm_titlebox__title,.site-content .vc_custom_heading{
+  font-family:"Cormorant Garamond",Georgia,serif!important;color:#1a2235!important}
+</style>
+</head>
+<body>
+
+<header id="hdr">
+  <div class="wrap nav">
+    <a href="/" class="brand" aria-label="AON Manancial Consulting — início">
+      <img class="logo-light" src="/assets/images/logo-manancial-light.png" alt="AON Manancial">
+      <img class="logo-dark" src="/assets/images/logo-manancial-dark.png" alt="AON Manancial">
+      <span class="bt"><b>AON Manancial</b><span>Consulting</span></span>
+    </a>
+    <nav>
+      <ul>
+        <li><a href="/quem-somos/" class="active">Quem Somos</a></li>
+        <li class="has-dropdown">
+          <a href="/formacoes/" aria-haspopup="true" aria-expanded="false">O que fazemos <svg class="care" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></a>
+          <ul class="dropdown">
+            <li>
+              <a href="/formacoes/">
+                <span class="dd-icon"><svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2zM22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></span>
+                <span class="dd-label"><b>Formações</b><small>Programas de desenvolvimento</small></span>
+              </a>
+            </li>
+            <li class="dropdown-sep"></li>
+            <li>
+              <a href="/servicos/">
+                <span class="dd-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></span>
+                <span class="dd-label"><b>Serviços</b><small>Auditoria, Fiscal, Advisory</small></span>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li><a href="/servicos/">Serviços</a></li>
+        <li><a href="/perspectivas/">Perspectivas</a></li>
+        <li><a href="/contatos/">Contactos</a></li>
+      </ul>
+    </nav>
+    <div class="nav-cta">
+      <a href="/contatos/" class="btn nav-btn">Fale Connosco <span class="arw">→</span></a>
+      <button class="burger" id="burger" aria-label="Abrir menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+  <div class="mobile-menu" id="mm">
+    <a href="/quem-somos/">Quem Somos</a>
+    <details class="mm-dropdown">
+      <summary>O que fazemos <svg class="care" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></summary>
+      <a href="/formacoes/">Formações</a>
+    </details>
+    <a href="/servicos/">Serviços</a>
+    <a href="/perspectivas/">Perspectivas</a>
+    <a href="/contatos/">Contactos</a>
+    <a href="/contatos/" class="btn btn-gold">Fale Connosco →</a>
+  </div>
+</header>
+
+<!-- ===================== PAGE HERO ===================== -->
+<section class="page-hero on-dark" id="top">
+  <div class="wrap reveal">
+    <span class="eyebrow">Quem Somos</span>
+    <h1>Uma nascente contínua de valor para as organizações.</h1>
+    <p>Somos uma consultora financeira e de gestão dedicada ao mercado angolano. Combinamos rigor técnico com proximidade humana para ajudar as organizações a crescer com solidez.</p>
+  </div>
+</section>
+
+<!-- ===================== SOBRE NÓS ===================== -->
+<section class="pad">
+  <div class="wrap">
+    <div class="about-grid reveal">
+      <div class="about-text">
+        <span class="eyebrow">A nossa história</span>
+        <h2>Consultoria com raízes em Angola, visão global.</h2>
+        <p>A AON Manancial Consulting nasceu da convicção de que as organizações angolanas merecem acesso a serviços de consultoria de excelência — com o rigor das melhores práticas internacionais e a proximidade que só o conhecimento do contexto local proporciona.</p>
+        <p>Ao longo dos anos, construímos uma equipa multidisciplinar de consultores com experiência comprovada em auditoria, fiscalidade, gestão estratégica e assessoria em transacções, servindo empresas nos sectores mais dinâmicos da economia angolana.</p>
+        <p>O nosso nome é um compromisso: ser a nascente onde as organizações encontram valor, clareza e orientação para os seus desafios mais exigentes.</p>
+      </div>
+      <div class="about-visual">
+        <div class="about-visual-inner reveal d1">
+          <span class="eyebrow">Em números</span>
+          <p>Uma trajectória construída sobre resultados concretos e relações de confiança duradouras.</p>
+          <div class="about-stat-grid">
+            <div class="about-stat"><b>+15</b><span>Anos de experiência em Angola</span></div>
+            <div class="about-stat"><b>+200</b><span>Clientes servidos</span></div>
+            <div class="about-stat"><b>4</b><span>Áreas de serviço especializadas</span></div>
+            <div class="about-stat"><b>100%</b><span>Foco no mercado angolano</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== VALORES ===================== -->
+<section class="pad" style="background:var(--paper);padding-top:0">
+  <div class="wrap">
+    <div class="sec-head reveal" style="text-align:center;margin-bottom:56px">
+      <span class="eyebrow center">Os nossos valores</span>
+      <h2>O que nos guia em cada projecto.</h2>
+      <p>Os nossos valores não são palavras numa parede — são os princípios que orientam cada decisão, cada recomendação e cada relação com os nossos clientes.</p>
+    </div>
+    <div class="values-grid">
+      <div class="value-card reveal">
+        <div class="value-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3>Rigor &amp; Independência</h3>
+        <p>Actuamos com total independência e elevados padrões técnicos. Os nossos pareceres são baseados em factos, análise criteriosa e ética profissional inegociável.</p>
+      </div>
+      <div class="value-card reveal d1">
+        <div class="value-icon">
+          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h3>Proximidade &amp; Confiança</h3>
+        <p>Construímos relações de longo prazo com os nossos clientes. Conhecemos os seus negócios em profundidade e estamos presentes nos momentos que mais importam.</p>
+      </div>
+      <div class="value-card reveal d2">
+        <div class="value-icon">
+          <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        </div>
+        <h3>Excelência &amp; Inovação</h3>
+        <p>Investimos continuamente na actualização do conhecimento e na adopção das melhores práticas internacionais, adaptadas à realidade do mercado angolano.</p>
+      </div>
+      <div class="value-card reveal">
+        <div class="value-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zM9 9h1V7H9zm0 8h6V11H9v6zm4-8h1V7h-1z"/></svg>
+        </div>
+        <h3>Transparência</h3>
+        <p>Comunicamos de forma clara, directa e honesta — sobre os riscos, as oportunidades e os limites do que é possível alcançar.</p>
+      </div>
+      <div class="value-card reveal d1">
+        <div class="value-icon">
+          <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14M22 4L12 14.01l-3-3"/></svg>
+        </div>
+        <h3>Orientação para Resultados</h3>
+        <p>O nosso sucesso mede-se pelo sucesso dos nossos clientes. Cada projecto tem objectivos claros e a nossa equipa trabalha para os superar.</p>
+      </div>
+      <div class="value-card reveal d2">
+        <div class="value-icon">
+          <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2zM9 22V12h6v10"/></svg>
+        </div>
+        <h3>Compromisso com Angola</h3>
+        <p>Acreditamos no potencial da economia angolana e no papel transformador que a consultoria de qualidade pode ter no desenvolvimento sustentável do país.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== MISSÃO ===================== -->
+<section class="mission-band">
+  <div class="wrap">
+    <div class="mission-inner">
+      <div class="reveal">
+        <span class="eyebrow">Missão &amp; Visão</span>
+        <h2>Criar valor sustentável nas organizações que servimos.</h2>
+        <p>A nossa missão é ser o parceiro de referência das organizações angolanas na gestão dos seus desafios financeiros, fiscais e estratégicos — com rigor, proximidade e uma visão orientada para o futuro.</p>
+      </div>
+      <div class="mission-items reveal d1">
+        <div class="mission-item">
+          <span class="mission-num">01</span>
+          <div>
+            <h4>Visão</h4>
+            <p>Ser a consultora de referência em Angola, reconhecida pela excelência técnica, pela integridade e pelo impacto positivo nas organizações que servimos.</p>
+          </div>
+        </div>
+        <div class="mission-item">
+          <span class="mission-num">02</span>
+          <div>
+            <h4>Proposta de Valor</h4>
+            <p>Combinamos o conhecimento profundo do mercado local com as melhores práticas internacionais, oferecendo soluções personalizadas e accionáveis.</p>
+          </div>
+        </div>
+        <div class="mission-item">
+          <span class="mission-num">03</span>
+          <div>
+            <h4>Abordagem</h4>
+            <p>Trabalhamos em estreita colaboração com os nossos clientes, entendendo o seu contexto único antes de propor qualquer solução.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CTA ===================== -->
+<section class="cta-strip reveal">
+  <div class="wrap">
+    <span class="eyebrow center">Trabalhe connosco</span>
+    <h2>Pronto para dar o próximo passo?</h2>
+    <p>Fale com a nossa equipa e descubra como podemos ajudar a sua organização a crescer com mais solidez e clareza estratégica.</p>
+    <div class="cta-actions">
+      <a href="/contatos/" class="btn btn-gold">Fale com um consultor <span class="arw">→</span></a>
+      <a href="/#servicos" class="btn btn-ghost" style="color:var(--navy);border-color:rgba(18,58,94,.3)">Ver os nossos serviços</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <div class="fmark"><b>AON Manancial</b><span>Consulting</span></div>
+        <p>Consultoria financeira e de gestão ao serviço das organizações angolanas. Rigor, proximidade e uma fonte contínua de valor.</p>
+      </div>
+      <div>
+        <h4>Serviços</h4>
+        <ul>
+          <li><a href="/servicos/#auditoria">Auditoria &amp; Assurance</a></li>
+          <li><a href="/servicos/#fiscalidade">Fiscalidade</a></li>
+          <li><a href="/servicos/#gestao">Consultoria de Gestão</a></li>
+          <li><a href="/servicos/#advisory">Advisory &amp; Transacções</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Empresa</h4>
+        <ul>
+          <li><a href="/quem-somos/">Quem Somos</a></li>
+          <li><a href="/perspectivas/">Perspectivas</a></li>
+          <li><a href="#">Carreiras</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contactos</h4>
+        <ul>
+          <li>Luanda, Angola</li>
+          <li><a href="mailto:geral@aonmanancial.co.ao">geral@aonmanancial.co.ao</a></li>
+          <li><a href="tel:+244900000000">+244 900 000 000</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 AON Manancial Consulting. Todos os direitos reservados.</span>
+      <div class="foot-social">
+        <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4 0 4.75 2.65 4.75 6.1V21H20v-5.5c0-1.3-.02-3-1.85-3-1.85 0-2.13 1.44-2.13 2.9V21H12z"/></svg></a>
+        <a href="#" aria-label="Email"><svg viewBox="0 0 24 24"><path d="M3 5h18v14H3zM3 5l9 7 9-7"/></svg></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="/js/home.js" defer></script>
+</body>
+</html>

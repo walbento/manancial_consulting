@@ -84,7 +84,8 @@ function sectionFromPath(relPath) {
 function injectFrontendAssets(html) {
   html = normalizeLegacyAssetRefs(html);
 
-  const customCss = '<link rel="stylesheet" href="/css/variables.css">\n<link rel="stylesheet" href="/css/base.css">\n<link rel="stylesheet" href="/css/layout.css">\n<link rel="stylesheet" href="/css/components.css">\n<link rel="stylesheet" href="/css/custom.css">';
+  const fonts = '<link rel="preconnect" href="https://fonts.googleapis.com">\n<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">';
+  const customCss = `${fonts}\n<link rel="stylesheet" href="/css/tokens.css">\n<link rel="stylesheet" href="/css/variables.css">\n<link rel="stylesheet" href="/css/base.css">\n<link rel="stylesheet" href="/css/layout.css">\n<link rel="stylesheet" href="/css/components.css">\n<link rel="stylesheet" href="/css/legacy-bridge.css">\n<link rel="stylesheet" href="/css/custom.css">`;
   const customJs = '<script src="/js/api.js" defer></script>\n<script src="/js/includes.js" defer></script>\n<script src="/js/menu.js" defer></script>\n<script src="/js/search.js" defer></script>\n<script src="/js/forms.js" defer></script>\n<script src="/js/main.js" defer></script>';
 
   if (!html.includes('/css/custom.css')) {

@@ -13,11 +13,21 @@
   }
 
   function initDropdowns() {
-    document.querySelectorAll('.stm-menu li.menu-item-has-children > a').forEach(function (link) {
+    var selectors = [
+      '.stm-menu li.menu-item-has-children > a',
+      '.stm-navigation > ul > li.menu-item-has-children > a',
+      '.stm-header li.menu-item-has-children > a',
+    ];
+
+    document.querySelectorAll(selectors.join(', ')).forEach(function (link) {
       link.addEventListener('click', function (e) {
         if (window.innerWidth > 991) return;
         e.preventDefault();
-        link.parentElement.classList.toggle('open');
+        var parent = link.parentElement;
+        parent.classList.toggle('open');
+        parent.parentElement.querySelectorAll(':scope > li.open').forEach(function (li) {
+          if (li !== parent) li.classList.remove('open');
+        });
       });
     });
   }

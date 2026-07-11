@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Serviços — AON Manancial Consulting</title>
+<meta name="description" content="Auditoria & Assurance, Fiscalidade, Consultoria de Gestão e Advisory & Transacções — as quatro áreas de serviço da AON Manancial Consulting em Angola.">
+<link rel="stylesheet" href="/css/pages/home.css">
+<link rel="icon" href="/assets/images/logo-manancial.png" type="image/png">
+<style>
+  /* ---- Serviços: layout de lista ---- */
+
+  .areas-intro{padding:100px 0 64px}
+  .areas-intro .sec-head{max-width:680px}
+
+  /* linha divisória */
+  .area-divider{border:none;border-top:1px solid rgba(18,58,94,.1);margin:0}
+
+  /* cada linha de serviço */
+  .area-row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:80px;
+    padding:72px 0;
+    align-items:start;
+    border-bottom:1px solid rgba(18,58,94,.1);
+  }
+  .area-row:last-child{border-bottom:none}
+
+  /* lado esquerdo */
+  .area-left{}
+  .area-meta{display:flex;align-items:center;gap:16px;margin-bottom:24px}
+  .area-num{
+    font-family:'Cormorant Garamond',serif;font-size:.9rem;font-weight:600;
+    letter-spacing:.14em;color:var(--gold-deep);
+  }
+  .area-ic{
+    width:40px;height:40px;border-radius:50%;background:var(--mist);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .area-ic svg{width:19px;height:19px;stroke:var(--navy);stroke-width:1.4;fill:none}
+  .area-left h3{
+    font-size:clamp(1.5rem,2.4vw,2rem);margin-bottom:14px;color:var(--navy-deep);
+  }
+  .area-left p{
+    font-size:.97rem;color:var(--ink-soft);line-height:1.75;max-width:320px;
+  }
+
+  /* lado direito — lista de sub-serviços */
+  .area-right{
+    display:flex;flex-direction:column;gap:14px;padding-top:8px;
+  }
+  .area-right li{
+    list-style:none;display:flex;align-items:flex-start;gap:14px;
+    font-size:.95rem;color:var(--ink);line-height:1.5;
+    padding-bottom:14px;border-bottom:1px solid rgba(18,58,94,.07);
+  }
+  .area-right li:last-child{border-bottom:none;padding-bottom:0}
+  .area-right li::before{
+    content:"—";color:var(--gold-deep);font-weight:600;flex-shrink:0;
+    margin-top:.05em;
+  }
+
+  /* diferenciadores */
+  .diff-band{background:var(--paper);padding:80px 0}
+  .diff-grid{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:2px;
+    background:rgba(18,58,94,.08);border:1px solid rgba(18,58,94,.08);
+  }
+  .diff-card{background:var(--white);padding:36px 32px;text-align:center}
+  .diff-card b{
+    font-family:'Cormorant Garamond',serif;font-size:2.6rem;font-weight:600;
+    color:var(--navy);display:block;margin-bottom:8px;
+  }
+  .diff-card span{font-size:.82rem;color:var(--ink-soft);line-height:1.5}
+
+  @media(max-width:900px){
+    .area-row{grid-template-columns:1fr;gap:36px;padding:56px 0}
+    .area-left p{max-width:100%}
+    .areas-intro{padding:72px 0 48px}
+  }
+  @media(max-width:640px){
+    .area-row{padding:44px 0;gap:28px}
+    .diff-grid{grid-template-columns:1fr 1fr}
+    .diff-card{padding:28px 18px}
+    .diff-card b{font-size:2rem}
+  }
+</style>
+<style>/* mc-shell-v2 */
+/* Páginas internas — esconder elementos WordPress */
+.stm-header,.stm-footer,.stm-header__overlay,.pearl_arrow_top,#searchModal{display:none!important}
+#wrapper{padding:0!important}
+/* Neutralizar Bootstrap/Pearl: repor base tipográfica Manancial */
+html{font-size:16px!important}
+body{font-size:16px!important;font-family:'Inter',sans-serif!important;line-height:1.6!important;color:#142433!important;background:#fff!important}
+/* Links — evitar azul Bootstrap dentro do rodapé */
+footer a{color:rgba(255,255,255,.62)!important}
+footer a:hover{color:#d9c398!important}
+footer ul li{color:rgba(255,255,255,.62)!important}
+/* Tipografia do conteúdo interno */
+.site-content{font-family:"Inter",sans-serif;color:#1a2235;padding:48px 32px 80px;max-width:1240px;margin:0 auto}
+.site-content h1,.site-content h2,.site-content h3,.site-content h4,
+.site-content .stm_titlebox__title,.site-content .vc_custom_heading{
+  font-family:"Cormorant Garamond",Georgia,serif!important;color:#1a2235!important}
+</style>
+</head>
+<body>
+
+<header id="hdr">
+  <div class="wrap nav">
+    <a href="/" class="brand" aria-label="AON Manancial Consulting — início">
+      <img class="logo-light" src="/assets/images/logo-manancial-light.png" alt="AON Manancial">
+      <img class="logo-dark" src="/assets/images/logo-manancial-dark.png" alt="AON Manancial">
+      <span class="bt"><b>AON Manancial</b><span>Consulting</span></span>
+    </a>
+    <nav>
+      <ul>
+        <li><a href="/quem-somos/">Quem Somos</a></li>
+        <li class="has-dropdown">
+          <a href="/formacoes/" aria-haspopup="true" aria-expanded="false">O que fazemos <svg class="care" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></a>
+          <ul class="dropdown">
+            <li>
+              <a href="/formacoes/">
+                <span class="dd-icon"><svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2zM22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></span>
+                <span class="dd-label"><b>Formações</b><small>Programas de desenvolvimento</small></span>
+              </a>
+            </li>
+            <li class="dropdown-sep"></li>
+            <li>
+              <a href="/servicos/">
+                <span class="dd-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></span>
+                <span class="dd-label"><b>Serviços</b><small>Auditoria, Fiscal, Advisory</small></span>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li><a href="/servicos/" class="active">Serviços</a></li>
+        <li><a href="/perspectivas/">Perspectivas</a></li>
+        <li><a href="/contatos/">Contactos</a></li>
+      </ul>
+    </nav>
+    <div class="nav-cta">
+      <a href="/contatos/" class="btn nav-btn">Fale Connosco <span class="arw">→</span></a>
+      <button class="burger" id="burger" aria-label="Abrir menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+  <div class="mobile-menu" id="mm">
+    <a href="/quem-somos/">Quem Somos</a>
+    <details class="mm-dropdown">
+      <summary>O que fazemos <svg class="care" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></summary>
+      <a href="/formacoes/">Formações</a>
+    </details>
+    <a href="/servicos/">Serviços</a>
+    <a href="/perspectivas/">Perspectivas</a>
+    <a href="/contatos/">Contactos</a>
+    <a href="/contatos/" class="btn btn-gold">Fale Connosco →</a>
+  </div>
+</header>
+
+<!-- ===================== PAGE HERO ===================== -->
+<section class="page-hero on-dark" id="top">
+  <div class="wrap reveal">
+    <span class="eyebrow">Serviços</span>
+    <h1>Da análise à execução. É o que nos distingue.</h1>
+    <p>Somos uma equipa multidisciplinar que combina rigor técnico e conhecimento profundo do contexto angolano para responder a cada desafio das organizações com soluções integradas.</p>
+  </div>
+</section>
+
+<!-- ===================== ÁREAS DE COMPETÊNCIA ===================== -->
+<section class="areas-intro">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">O que fazemos</span>
+      <h2>As nossas áreas de competência.</h2>
+      <p>Cada serviço combina rigor técnico com um conhecimento profundo do contexto angolano, para que as suas decisões sejam sustentadas por informação de confiança.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="area-divider">
+
+<!-- ===================== LISTA DE SERVIÇOS ===================== -->
+<section style="padding-bottom:100px">
+  <div class="wrap">
+
+    <!-- 01 Auditoria -->
+    <div class="area-row reveal">
+      <div class="area-left">
+        <div class="area-meta">
+          <span class="area-num">01</span>
+          <div class="area-ic">
+            <svg viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>
+          </div>
+        </div>
+        <h3>Auditoria &amp; Assurance</h3>
+        <p>Rigor e confiança nas suas demonstrações financeiras, em conformidade com o PGC-AO e com as normas internacionais de relato.</p>
+      </div>
+      <ul class="area-right">
+        <li>Auditoria às demonstrações financeiras (PGC-AO / IFRS)</li>
+        <li>Revisão limitada e procedimentos acordados</li>
+        <li>Due diligence financeira</li>
+        <li>Relato ESG e não-financeiro</li>
+      </ul>
+    </div>
+
+    <!-- 02 Fiscalidade -->
+    <div class="area-row reveal">
+      <div class="area-left">
+        <div class="area-meta">
+          <span class="area-num">02</span>
+          <div class="area-ic">
+            <svg viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          </div>
+        </div>
+        <h3>Fiscalidade</h3>
+        <p>Planeamento e cumprimento fiscal que reduzem a exposição a risco e libertam capital para reinvestir no negócio.</p>
+      </div>
+      <ul class="area-right">
+        <li>Planeamento fiscal e compliance</li>
+        <li>Preços de transferência</li>
+        <li>Apoio em inspecções e litígios fiscais</li>
+        <li>Estruturação fiscal de transacções</li>
+      </ul>
+    </div>
+
+    <!-- 03 Consultoria de Gestão -->
+    <div class="area-row reveal">
+      <div class="area-left">
+        <div class="area-meta">
+          <span class="area-num">03</span>
+          <div class="area-ic">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+          </div>
+        </div>
+        <h3>Consultoria de Gestão</h3>
+        <p>Estratégia, processos e transformação organizacional para crescer com eficiência, controlo e resiliência.</p>
+      </div>
+      <ul class="area-right">
+        <li>Estratégia corporativa</li>
+        <li>Reestruturação e turnaround</li>
+        <li>Optimização de processos</li>
+        <li>Governo corporativo e gestão de risco</li>
+      </ul>
+    </div>
+
+    <!-- 04 Advisory -->
+    <div class="area-row reveal">
+      <div class="area-left">
+        <div class="area-meta">
+          <span class="area-num">04</span>
+          <div class="area-ic">
+            <svg viewBox="0 0 24 24"><path d="M3 3v18h18M7 15l4-5 3 3 5-7"/></svg>
+          </div>
+        </div>
+        <h3>Advisory &amp; Transacções</h3>
+        <p>Avaliações, <em>due diligence</em> e apoio a fusões, aquisições e captação de financiamento junto de investidores e banca.</p>
+      </div>
+      <ul class="area-right">
+        <li>Avaliação de empresas (valuation)</li>
+        <li>Due diligence financeira e comercial</li>
+        <li>Apoio a fusões e aquisições</li>
+        <li>Captação de financiamento</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===================== DIFERENCIADORES ===================== -->
+<section class="diff-band">
+  <div class="wrap">
+    <div class="sec-head reveal" style="text-align:center;margin-bottom:56px">
+      <span class="eyebrow center">Em números</span>
+      <h2>Uma trajectória construída sobre resultados.</h2>
+    </div>
+    <div class="diff-grid reveal">
+      <div class="diff-card"><b>+15</b><span>Anos de experiência<br>no mercado angolano</span></div>
+      <div class="diff-card"><b>+200</b><span>Clientes servidos<br>em 4 áreas de serviço</span></div>
+      <div class="diff-card"><b>4</b><span>Áreas de serviço<br>especializadas</span></div>
+      <div class="diff-card"><b>100%</b><span>Foco no mercado<br>angolano</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CTA ===================== -->
+<section class="reveal" style="padding:100px 0;text-align:center">
+  <div class="wrap">
+    <span class="eyebrow center">Próximo passo</span>
+    <h2 style="font-size:clamp(2rem,3.6vw,2.9rem);margin-bottom:18px">Qual é o seu desafio?</h2>
+    <p style="color:var(--ink-soft);font-size:1.05rem;max-width:560px;margin:0 auto 40px">Fale connosco numa conversa inicial, sem compromisso. Identificamos em conjunto qual a área de serviço mais adequada às suas necessidades.</p>
+    <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
+      <a href="/contatos/" class="btn btn-gold">Fale com um consultor <span class="arw">→</span></a>
+      <a href="/perspectivas/" class="btn btn-ghost" style="color:var(--navy);border-color:rgba(18,58,94,.3)">Ler as nossas perspectivas</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <div class="fmark"><b>AON Manancial</b><span>Consulting</span></div>
+        <p>Consultoria financeira e de gestão ao serviço das organizações angolanas. Rigor, proximidade e uma fonte contínua de valor.</p>
+      </div>
+      <div>
+        <h4>Serviços</h4>
+        <ul>
+          <li><a href="/servicos/#auditoria">Auditoria &amp; Assurance</a></li>
+          <li><a href="/servicos/#fiscalidade">Fiscalidade</a></li>
+          <li><a href="/servicos/#gestao">Consultoria de Gestão</a></li>
+          <li><a href="/servicos/#advisory">Advisory &amp; Transacções</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Empresa</h4>
+        <ul>
+          <li><a href="/quem-somos/">Quem Somos</a></li>
+          <li><a href="/perspectivas/">Perspectivas</a></li>
+          <li><a href="#">Carreiras</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contactos</h4>
+        <ul>
+          <li>Luanda, Angola</li>
+          <li><a href="mailto:geral@aonmanancial.co.ao">geral@aonmanancial.co.ao</a></li>
+          <li><a href="tel:+244900000000">+244 900 000 000</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 AON Manancial Consulting. Todos os direitos reservados.</span>
+      <div class="foot-social">
+        <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4 0 4.75 2.65 4.75 6.1V21H20v-5.5c0-1.3-.02-3-1.85-3-1.85 0-2.13 1.44-2.13 2.9V21H12z"/></svg></a>
+        <a href="#" aria-label="Email"><svg viewBox="0 0 24 24"><path d="M3 5h18v14H3zM3 5l9 7 9-7"/></svg></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="/js/home.js" defer></script>
+</body>
+</html>

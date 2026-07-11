@@ -1,18 +1,1 @@
-/**
- * Overrides and front-office extensions.
- * Theme styles remain in /wp-content/ (legacy).
- */
-
-body.front-ready .stm-site-loader {
-  opacity: 1;
-}
-
-[data-api-content] {
-  min-height: 2rem;
-}
-
-[data-api-content][data-loading="true"]::after {
-  content: 'A carregar...';
-  color: var(--color-text-muted);
-  font-size: 0.875rem;
-}
+/* Overrides pontuais do projecto — preferir tokens + legacy-bridge */

@@ -7,9 +7,12 @@
   "scripts": {
     "mirror": "node mirror.mjs",
     "migrate": "node scripts/migrate-to-frontend.mjs",
-    "build": "node scripts/migrate-to-frontend.mjs",
+    "build": "node scripts/migrate-to-frontend.mjs && node scripts/build-reference.mjs",
+    "home": "node scripts/extract-home.mjs",
+    "brand": "node scripts/build-reference.mjs",
     "assets": "node scripts/fetch-assets.mjs",
-    "dev": "npm run build && npx serve frontend"
+    "dev": "npx serve frontend",
+    "dev:build": "npm run build && npx serve frontend"
   },
   "keywords": [],
   "author": "",

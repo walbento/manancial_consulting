@@ -1,6 +1,6 @@
 [build]
   publish = "frontend"
-  command = "node scripts/migrate-to-frontend.mjs"
+  command = "node scripts/migrate-to-frontend.mjs && node scripts/build-reference.mjs"
 
 [[redirects]]
   from = "/wp/*"

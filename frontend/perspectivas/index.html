@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Perspectivas — AON Manancial Consulting</title>
+<meta name="description" content="Análises, relatórios e pontos de vista da AON Manancial Consulting sobre fiscalidade, gestão e economia angolana.">
+<link rel="stylesheet" href="/css/pages/home.css">
+<link rel="icon" href="/assets/images/logo-manancial.png" type="image/png">
+<style>
+  /* ---- Perspectivas: estilos específicos ---- */
+
+  /* filtros de categoria */
+  .filter-bar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:56px}
+  .filter-btn{
+    padding:8px 20px;border-radius:2px;font-size:.82rem;font-weight:600;
+    letter-spacing:.1em;text-transform:uppercase;cursor:pointer;border:1px solid rgba(18,58,94,.2);
+    background:transparent;color:var(--ink-soft);transition:background .25s,color .25s,border-color .25s;
+  }
+  .filter-btn.active,.filter-btn:hover{background:var(--navy);color:var(--white);border-color:var(--navy)}
+
+  /* grelha de artigos */
+  .articles-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
+  .article-card{display:flex;flex-direction:column;border:1px solid rgba(18,58,94,.1);border-radius:3px;overflow:hidden;transition:box-shadow .3s,transform .3s}
+  .article-card:hover{box-shadow:0 12px 48px rgba(12,36,64,.12);transform:translateY(-4px)}
+  .article-thumb{height:220px;background:linear-gradient(150deg,#0c2440 0%,#123a5e 60%,#1a4d7a 100%);position:relative;overflow:hidden}
+  .article-thumb-inner{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:32px}
+  .article-thumb-inner svg{width:48px;height:48px;stroke:rgba(255,255,255,.25);stroke-width:1;fill:none}
+  .article-tag{position:absolute;top:16px;left:16px;background:var(--gold-soft);color:#0c2440;font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:4px 10px;border-radius:2px}
+  .article-body{padding:28px 28px 32px;flex:1;display:flex;flex-direction:column}
+  .article-meta{font-size:.78rem;color:var(--ink-soft);margin-bottom:14px;display:flex;gap:12px;align-items:center}
+  .article-meta span{display:flex;align-items:center;gap:5px}
+  .article-body h3{font-size:1.25rem;line-height:1.4;margin-bottom:14px;color:var(--navy)}
+  .article-body h3 a{color:inherit;text-decoration:none;transition:color .2s}
+  .article-body h3 a:hover{color:var(--gold-deep)}
+  .article-body p{color:var(--ink-soft);font-size:.93rem;line-height:1.7;flex:1;margin-bottom:20px}
+  .article-read{font-size:.82rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);text-decoration:none;display:flex;align-items:center;gap:6px;transition:gap .2s,color .2s}
+  .article-read:hover{gap:10px;color:var(--gold-deep)}
+
+  /* artigo em destaque */
+  .featured-article{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid rgba(18,58,94,.1);border-radius:3px;overflow:hidden;margin-bottom:64px}
+  .featured-thumb{background:linear-gradient(150deg,#0c2440 0%,#0e3055 40%,#123a5e 100%);min-height:360px;display:flex;align-items:center;justify-content:center;position:relative}
+  .featured-thumb svg{width:72px;height:72px;stroke:rgba(255,255,255,.18);stroke-width:1;fill:none}
+  .featured-tag{position:absolute;top:24px;left:24px;background:var(--gold-soft);color:#0c2440;font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:5px 14px;border-radius:2px}
+  .featured-body{padding:48px 48px 48px;display:flex;flex-direction:column;justify-content:center}
+  .featured-body .article-meta{margin-bottom:20px}
+  .featured-body h2{font-size:clamp(1.5rem,2.6vw,2rem);line-height:1.35;margin-bottom:18px;color:var(--navy)}
+  .featured-body p{color:var(--ink-soft);font-size:1rem;line-height:1.75;margin-bottom:28px}
+
+  /* newsletter strip */
+  .newsletter-band{background:var(--paper);padding:80px 0}
+  .newsletter-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+  .newsletter-inner h2{font-size:clamp(1.7rem,2.8vw,2.2rem);margin-bottom:14px}
+  .newsletter-inner p{color:var(--ink-soft);line-height:1.7}
+  .newsletter-form{display:flex;gap:12px}
+  .newsletter-form input{flex:1;padding:14px 18px;border:1px solid rgba(18,58,94,.2);border-radius:2px;font-family:'Inter',sans-serif;font-size:.95rem;color:var(--navy);outline:none;transition:border-color .2s}
+  .newsletter-form input:focus{border-color:var(--navy)}
+  .newsletter-form input::placeholder{color:rgba(20,36,51,.4)}
+
+  /* filter hide/show */
+  .article-card{transition:box-shadow .3s,transform .3s,opacity .35s,scale .35s}
+  .article-card.hidden{
+    display:none;
+  }
+  .articles-grid.filtering .article-card:not(.hidden){
+    animation:cardIn .35s ease both;
+  }
+  @keyframes cardIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+
+  @media(max-width:1024px){.articles-grid{grid-template-columns:1fr 1fr}}
+  @media(max-width:760px){
+    .articles-grid{grid-template-columns:1fr}
+    .featured-article{grid-template-columns:1fr}
+    .featured-thumb{min-height:200px}
+    .featured-body{padding:28px 24px}
+    .newsletter-inner{grid-template-columns:1fr;gap:36px}
+    .newsletter-form{flex-direction:column}
+    .filter-bar{gap:8px}
+    .filter-btn{padding:8px 14px;font-size:.76rem}
+  }
+  @media(max-width:480px){
+    .article-body{padding:22px 20px 26px}
+    .featured-body{padding:22px 18px}
+  }
+</style>
+<style>/* mc-shell-v2 */
+/* Páginas internas — esconder elementos WordPress */
+.stm-header,.stm-footer,.stm-header__overlay,.pearl_arrow_top,#searchModal{display:none!important}
+#wrapper{padding:0!important}
+/* Neutralizar Bootstrap/Pearl: repor base tipográfica Manancial */
+html{font-size:16px!important}
+body{font-size:16px!important;font-family:'Inter',sans-serif!important;line-height:1.6!important;color:#142433!important;background:#fff!important}
+/* Links — evitar azul Bootstrap dentro do rodapé */
+footer a{color:rgba(255,255,255,.62)!important}
+footer a:hover{color:#d9c398!important}
+footer ul li{color:rgba(255,255,255,.62)!important}
+/* Tipografia do conteúdo interno */
+.site-content{font-family:"Inter",sans-serif;color:#1a2235;padding:48px 32px 80px;max-width:1240px;margin:0 auto}
+.site-content h1,.site-content h2,.site-content h3,.site-content h4,
+.site-content .stm_titlebox__title,.site-content .vc_custom_heading{
+  font-family:"Cormorant Garamond",Georgia,serif!important;color:#1a2235!important}
+</style>
+</head>
+<body>
+
+<header id="hdr">
+  <div class="wrap nav">
+    <a href="/" class="brand" aria-label="AON Manancial Consulting — início">
+      <img class="logo-light" src="/assets/images/logo-manancial-light.png" alt="AON Manancial">
+      <img class="logo-dark" src="/assets/images/logo-manancial-dark.png" alt="AON Manancial">
+      <span class="bt"><b>AON Manancial</b><span>Consulting</span></span>
+    </a>
+    <nav>
+      <ul>
+        <li><a href="/quem-somos/">Quem Somos</a></li>
+        <li class="has-dropdown">
+          <a href="/formacoes/" aria-haspopup="true" aria-expanded="false">O que fazemos <svg class="care" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></a>
+          <ul class="dropdown">
+            <li>
+              <a href="/formacoes/">
+                <span class="dd-icon"><svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2zM22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></span>
+                <span class="dd-label"><b>Formações</b><small>Programas de desenvolvimento</small></span>
+              </a>
+            </li>
+            <li class="dropdown-sep"></li>
+            <li>
+              <a href="/servicos/">
+                <span class="dd-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></span>
+                <span class="dd-label"><b>Serviços</b><small>Auditoria, Fiscal, Advisory</small></span>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li><a href="/servicos/">Serviços</a></li>
+        <li><a href="/perspectivas/" class="active">Perspectivas</a></li>
+        <li><a href="/contatos/">Contactos</a></li>
+      </ul>
+    </nav>
+    <div class="nav-cta">
+      <a href="/contatos/" class="btn nav-btn">Fale Connosco <span class="arw">→</span></a>
+      <button class="burger" id="burger" aria-label="Abrir menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+  <div class="mobile-menu" id="mm">
+    <a href="/quem-somos/">Quem Somos</a>
+    <details class="mm-dropdown">
+      <summary>O que fazemos <svg class="care" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></summary>
+      <a href="/formacoes/">Formações</a>
+    </details>
+    <a href="/servicos/">Serviços</a>
+    <a href="/perspectivas/">Perspectivas</a>
+    <a href="/contatos/">Contactos</a>
+    <a href="/contatos/" class="btn btn-gold">Fale Connosco →</a>
+  </div>
+</header>
+
+<!-- ===================== PAGE HERO ===================== -->
+<section class="page-hero on-dark" id="top">
+  <div class="wrap reveal">
+    <span class="eyebrow">Perspectivas</span>
+    <h1>Análises e pontos de vista sobre a economia e as organizações.</h1>
+    <p>Reflexões aprofundadas, relatórios sectoriais e comentários regulatórios da equipa AON Manancial Consulting — para ajudar os líderes a navegar um contexto cada vez mais complexo.</p>
+  </div>
+</section>
+
+<!-- ===================== ARTIGO EM DESTAQUE ===================== -->
+<section class="pad">
+  <div class="wrap">
+    <div class="sec-head reveal" style="margin-bottom:40px">
+      <span class="eyebrow">Em Destaque</span>
+      <h2>O nosso ponto de vista mais recente.</h2>
+    </div>
+    <article class="featured-article reveal">
+      <div class="featured-thumb">
+        <div class="featured-tag">Fiscalidade</div>
+        <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8zM14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg>
+      </div>
+      <div class="featured-body">
+        <div class="article-meta">
+          <span><svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="1.5" fill="none"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg> Julho 2026</span>
+          <span>· 8 min de leitura</span>
+        </div>
+        <h2>Relatório Fiscal Angola 2026: o que muda para as empresas e como se preparar.</h2>
+        <p>Com as alterações introduzidas pelo Orçamento Geral do Estado de 2026, as empresas angolanas enfrentam um conjunto de novas obrigações em sede de IRT, IVA e Imposto Industrial. Analisamos as principais mudanças e o que os gestores financeiros devem priorizar nos próximos meses.</p>
+        <a href="#" class="btn btn-gold">Ler artigo completo <span class="arw">→</span></a>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ===================== FILTROS + ARTIGOS ===================== -->
+<section style="padding:0 0 100px">
+  <div class="wrap">
+    <div class="filter-bar reveal">
+      <button class="filter-btn active" data-filter="todos">Todos</button>
+      <button class="filter-btn" data-filter="fiscalidade">Fiscalidade</button>
+      <button class="filter-btn" data-filter="auditoria">Auditoria</button>
+      <button class="filter-btn" data-filter="gestao-estrategica">Gestão Estratégica</button>
+      <button class="filter-btn" data-filter="mercados-economia">Mercados &amp; Economia</button>
+      <button class="filter-btn" data-filter="advisory">Advisory</button>
+    </div>
+    <div class="articles-grid">
+
+      <!-- Artigo 1 -->
+      <article class="article-card reveal" data-category="auditoria">
+        <div class="article-thumb">
+          <div class="article-tag">Auditoria</div>
+          <div class="article-thumb-inner">
+            <svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+          </div>
+        </div>
+        <div class="article-body">
+          <div class="article-meta">
+            <span><svg viewBox="0 0 24 24" width="13" height="13" stroke="currentColor" stroke-width="1.5" fill="none"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg> Junho 2026</span>
+            <span>· 6 min</span>
+          </div>
+          <h3><a href="#">Normas Internacionais de Auditoria em Angola: estado actual e tendências.</a></h3>
+          <p>A adopção das ISA em Angola continua a ser um desafio. Analisamos o progresso regulatório, os gaps existentes e o impacto para as empresas auditadas.</p>
+          <a href="#" class="article-read">Ler mais <span>→</span></a>
+        </div>
+      </article>
+
+      <!-- Artigo 2 -->
+      <article class="article-card reveal d1" data-category="gestao-estrategica">
+        <div class="article-thumb">
+          <div class="article-tag">Gestão Estratégica</div>
+          <div class="article-thumb-inner">
+            <svg viewBox="0 0 24 24"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
+          </div>
+        </div>
+        <div class="article-body">
+          <div class="article-meta">
+            <span><svg viewBox="0 0 24 24" width="13" height="13" stroke="currentColor" stroke-width="1.5" fill="none"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg> Maio 2026</span>
+            <span>· 5 min</span>
+          </div>
+          <h3><a href="#">Transformação digital nas PME angolanas: barreiras e oportunidades.</a></h3>
+          <p>A digitalização chegou às grandes empresas. Mas como está a transformação a chegar às pequenas e médias empresas angolanas — e o que pode acelerar esse processo?</p>
+          <a href="#" class="article-read">Ler mais <span>→</span></a>
+        </div>
+      </article>
+
+      <!-- Artigo 3 -->
+      <article class="article-card reveal d2" data-category="mercados-economia">
+        <div class="article-thumb">
+          <div class="article-tag">Mercados &amp; Economia</div>
+          <div class="article-thumb-inner">
+            <svg viewBox="0 0 24 24"><path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zM2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          </div>
+        </div>
+        <div class="article-body">
+          <div class="article-meta">
+            <span><svg viewBox="0 0 24 24" width="13" height="13" stroke="currentColor" stroke-width="1.5" fill="none"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg> Abril 2026</span>
+            <span>· 7 min</span>
+          </div>
+          <h3><a href="#">Perspectiva macro: Angola 2026 — estabilidade cambial e crescimento moderado.</a></h3>
+          <p>O kwanza estabilizou, a inflação recua e o crescimento do PIB não-petrolífero acelera. Que implicações práticas tem este contexto para os gestores empresariais?</p>
+          <a href="#" class="article-read">Ler mais <span>→</span></a>
+        </div>
+      </article>
+
+      <!-- Artigo 4 -->
+      <article class="article-card reveal" data-category="advisory">
+        <div class="article-thumb">
+          <div class="article-tag">Advisory</div>
+          <div class="article-thumb-inner">
+            <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+        </div>
+        <div class="article-body">
+          <div class="article-meta">
+            <span><svg viewBox="0 0 24 24" width="13" height="13" stroke="currentColor" stroke-width="1.5" fill="none"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg> Março 2026</span>
+            <span>· 4 min</span>
+          </div>
+          <h3><a href="#">Due diligence em Angola: especificidades que os compradores internacionais devem conhecer.</a></h3>
+          <p>As transacções de M&amp;A em Angola têm particularidades regulatórias, fiscais e contabilísticas que tornam o processo de due diligence mais exigente do que noutros mercados africanos.</p>
+          <a href="#" class="article-read">Ler mais <span>→</span></a>
+        </div>
+      </article>
+
+      <!-- Artigo 5 -->
+      <article class="article-card reveal d1" data-category="fiscalidade">
+        <div class="article-thumb">
+          <div class="article-tag">Fiscalidade</div>
+          <div class="article-thumb-inner">
+            <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8zM14 2v6h6M16 13H8M16 17H8"/></svg>
+          </div>
+        </div>
+        <div class="article-body">
+          <div class="article-meta">
+            <span><svg viewBox="0 0 24 24" width="13" height="13" stroke="currentColor" stroke-width="1.5" fill="none"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg> Fevereiro 2026</span>
+            <span>· 5 min</span>
+          </div>
+          <h3><a href="#">IVA em Angola: dois anos depois — lições aprendidas e desafios persistentes.</a></h3>
+          <p>A implementação do IVA em Angola foi um marco histórico na reforma fiscal. Que balanço fazemos dois anos depois? O que ainda precisa de ser ajustado?</p>
+          <a href="#" class="article-read">Ler mais <span>→</span></a>
+        </div>
+      </article>
+
+      <!-- Artigo 6 -->
+      <article class="article-card reveal d2" data-category="gestao-estrategica">
+        <div class="article-thumb">
+          <div class="article-tag">Gestão Estratégica</div>
+          <div class="article-thumb-inner">
+            <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+        </div>
+        <div class="article-body">
+          <div class="article-meta">
+            <span><svg viewBox="0 0 24 24" width="13" height="13" stroke="currentColor" stroke-width="1.5" fill="none"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg> Janeiro 2026</span>
+            <span>· 6 min</span>
+          </div>
+          <h3><a href="#">Governance corporativa em Angola: o que separa as empresas que crescem das que ficam para trás.</a></h3>
+          <p>Os dados mostram que as empresas com estruturas de governance mais robustas têm melhor acesso a financiamento e maior resiliência em ciclos económicos adversos.</p>
+          <a href="#" class="article-read">Ler mais <span>→</span></a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===================== NEWSLETTER ===================== -->
+<section class="newsletter-band">
+  <div class="wrap">
+    <div class="newsletter-inner reveal">
+      <div>
+        <span class="eyebrow">Mantenha-se informado</span>
+        <h2>Receba as nossas perspectivas directamente no seu email.</h2>
+        <p>Uma publicação mensal com análises fiscais, tendências de gestão e pontos de vista sobre a economia angolana. Sem spam, sempre relevante.</p>
+      </div>
+      <div>
+        <form class="newsletter-form" onsubmit="handleNewsletter(event)">
+          <input type="email" placeholder="o.seu@email.com" required aria-label="Email para newsletter">
+          <button type="submit" class="btn btn-gold">Subscrever <span class="arw">→</span></button>
+        </form>
+        <p style="font-size:.8rem;color:var(--ink-soft);margin-top:14px">Pode cancelar a qualquer momento. Consulte a nossa <a href="#" style="color:var(--navy)">política de privacidade</a>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CTA ===================== -->
+<section class="cta-section reveal">
+  <div class="wrap" style="text-align:center;padding:80px 0">
+    <span class="eyebrow center">Fale com a nossa equipa</span>
+    <h2 style="font-size:clamp(2rem,3.6vw,2.9rem);margin-bottom:18px">Tem um desafio específico em mente?</h2>
+    <p style="color:var(--ink-soft);font-size:1.05rem;max-width:540px;margin:0 auto 40px">Os nossos consultores estão disponíveis para uma conversa inicial sem compromisso.</p>
+    <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
+      <a href="/contatos/" class="btn btn-gold">Fale com um consultor <span class="arw">→</span></a>
+      <a href="/quem-somos/" class="btn btn-ghost" style="color:var(--navy);border-color:rgba(18,58,94,.3)">Quem Somos</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <div class="fmark"><b>AON Manancial</b><span>Consulting</span></div>
+        <p>Consultoria financeira e de gestão ao serviço das organizações angolanas. Rigor, proximidade e uma fonte contínua de valor.</p>
+      </div>
+      <div>
+        <h4>Serviços</h4>
+        <ul>
+          <li><a href="/servicos/#auditoria">Auditoria &amp; Assurance</a></li>
+          <li><a href="/servicos/#fiscalidade">Fiscalidade</a></li>
+          <li><a href="/servicos/#gestao">Consultoria de Gestão</a></li>
+          <li><a href="/servicos/#advisory">Advisory &amp; Transacções</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Empresa</h4>
+        <ul>
+          <li><a href="/quem-somos/">Quem Somos</a></li>
+          <li><a href="/perspectivas/">Perspectivas</a></li>
+          <li><a href="#">Carreiras</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contactos</h4>
+        <ul>
+          <li>Luanda, Angola</li>
+          <li><a href="mailto:geral@aonmanancial.co.ao">geral@aonmanancial.co.ao</a></li>
+          <li><a href="tel:+244900000000">+244 900 000 000</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 AON Manancial Consulting. Todos os direitos reservados.</span>
+      <div class="foot-social">
+        <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4 0 4.75 2.65 4.75 6.1V21H20v-5.5c0-1.3-.02-3-1.85-3-1.85 0-2.13 1.44-2.13 2.9V21H12z"/></svg></a>
+        <a href="#" aria-label="Email"><svg viewBox="0 0 24 24"><path d="M3 5h18v14H3zM3 5l9 7 9-7"/></svg></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="/js/home.js" defer></script>
+<script>
+function handleNewsletter(e){
+  e.preventDefault();
+  const btn=e.target.querySelector('button');
+  const original=btn.innerHTML;
+  btn.textContent='Subscrito!';
+  btn.disabled=true;
+  setTimeout(()=>{btn.innerHTML=original;btn.disabled=false;e.target.reset();},3000);
+}
+// Filter buttons — filtrar artigos por categoria
+(function(){
+  const btns = document.querySelectorAll('.filter-btn');
+  const cards = document.querySelectorAll('.article-card[data-category]');
+  const grid = document.querySelector('.articles-grid');
+
+  btns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      // actualizar botão activo
+      btns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const filter = btn.dataset.filter;
+
+      // animar grelha
+      grid.classList.add('filtering');
+
+      cards.forEach(card => {
+        if (filter === 'todos' || card.dataset.category === filter) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+
+      // remover classe de animação após transição
+      setTimeout(() => grid.classList.remove('filtering'), 400);
+    });
+  });
+})();
+</script>
+</body>
+</html>

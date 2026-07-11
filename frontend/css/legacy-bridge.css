@@ -1,0 +1,477 @@
+/**
+ * Design system da referência aplicado ao tema Pearl (site espelhado).
+ * Não altera HTML, conteúdo nem estrutura de menus/dropdowns.
+ */
+
+/* ── Tipografia global ── */
+body,
+.stm-header,
+.stm-footer,
+.site-content,
+.wpb-content-wrapper,
+.wpcf7-form,
+input, select, textarea, button {
+  font-family: var(--font-secondary) !important;
+}
+
+h1, h2, h3, h4, h5, h6,
+.heading_font,
+.stm_titlebox__title,
+.vc_custom_heading,
+.stm_iconbox__title,
+.stm_iconbox__text h5,
+.widgettitle,
+.widget-footer-title h4 {
+  font-family: var(--font-display) !important;
+  color: var(--navy) !important;
+  font-weight: 600 !important;
+}
+
+/* ── Header branco (referência) ── */
+.stm-header,
+.stm-header__row_color,
+.stm-header__row_color_center,
+.stm-header__overlay {
+  background: var(--bg) !important;
+  border-bottom: 1px solid var(--border);
+  box-shadow: var(--token-shadow-sm);
+}
+
+.stm-header .stm-logo,
+.stm-header__element .stm-logo {
+  display: inline-flex !important;
+  align-items: center !important;
+  line-height: 0 !important;
+}
+
+.stm-header .stm-logo img {
+  max-height: 56px !important;
+  width: auto !important;
+  height: auto !important;
+  object-fit: contain !important;
+}
+
+/* Menu principal — dropdowns intactos */
+.stm-header .stm-navigation > ul,
+.stm-header ul.stm-menu,
+.stm-header .stm-navigation ul {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0;
+}
+
+.stm-header .stm-navigation > ul > li,
+.stm-header ul.stm-menu > li {
+  position: relative;
+}
+
+.stm-header .stm-navigation > ul > li > a,
+.stm-header ul.stm-menu > li > a {
+  font-family: var(--font-secondary) !important;
+  font-size: 14px !important;
+  letter-spacing: 1.3px !important;
+  text-transform: uppercase !important;
+  color: var(--navy) !important;
+  font-weight: 500 !important;
+  padding: 22px 14px !important;
+  display: inline-block !important;
+  transition: color 0.2s !important;
+  background: transparent !important;
+}
+
+.stm-header .stm-navigation > ul > li > a:hover,
+.stm-header ul.stm-menu > li > a:hover,
+.stm-header .stm-navigation > ul > li.current-menu-item > a,
+.stm-header ul.stm-menu > li.current-menu-item > a,
+.stm-header .stm-navigation > ul > li.current_page_item > a {
+  color: var(--gold-dark) !important;
+}
+
+/* Indicador de submenu (chevron dourado) */
+.stm-header .menu-item-has-children > a::after {
+  content: "";
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  border-right: 1.5px solid var(--gold);
+  border-bottom: 1.5px solid var(--gold);
+  transform: rotate(45deg);
+  margin-left: 7px;
+  vertical-align: middle;
+  position: relative;
+  top: -2px;
+}
+
+/* Dropdown — visível no hover, estilo referência */
+.stm-header .sub-menu {
+  position: absolute !important;
+  top: 100% !important;
+  left: -18px !important;
+  min-width: 270px !important;
+  background: var(--bg) !important;
+  border-top: 2px solid var(--gold) !important;
+  box-shadow: var(--token-shadow-md) !important;
+  padding: 10px 0 !important;
+  margin: 0 !important;
+  list-style: none !important;
+  z-index: 300 !important;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+  transition: opacity 0.22s ease, visibility 0.22s ease, transform 0.22s ease;
+  display: block !important;
+}
+
+.stm-header li:hover > .sub-menu,
+.stm-header li.menu-item-has-children:hover > .sub-menu,
+.stm-header li.open > .sub-menu {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: translateY(0) !important;
+}
+
+.stm-header .sub-menu li {
+  display: block !important;
+  width: 100% !important;
+  float: none !important;
+}
+
+.stm-header .sub-menu li a,
+.stm-header .sub-menu li a:visited {
+  display: block !important;
+  padding: 9px 24px !important;
+  font-size: 14.5px !important;
+  font-family: var(--font-secondary) !important;
+  color: var(--text) !important;
+  letter-spacing: 0.2px !important;
+  text-transform: none !important;
+  font-weight: 400 !important;
+  border-left: 2px solid transparent !important;
+  background: transparent !important;
+  white-space: normal !important;
+}
+
+.stm-header .sub-menu li a:hover {
+  background: var(--bg-soft) !important;
+  color: var(--navy) !important;
+  border-left-color: var(--gold) !important;
+}
+
+.stm_mobile__switcher .mbc,
+.stm_mobile__switcher span {
+  background: var(--navy) !important;
+}
+
+/* ── Matar ciano legacy (#148EA6 / #19b8e0) ── */
+.mtc,
+.mtc_b,
+.stmicon-forward,
+.fa.mtc,
+i.mtc,
+.search-submit i.mtc {
+  color: var(--gold) !important;
+}
+
+.mbc,
+.stm_separator.mbc,
+.stm_iconbox__dot,
+.stm_iconbox__dot_first,
+.stm_iconbox__dot_second,
+.stm_iconbox__dot_third {
+  background-color: var(--gold) !important;
+}
+
+.stm_separator.mbc {
+  height: 2px !important;
+  width: 54px !important;
+}
+
+.stm_flipbox__back.mbc,
+.stm_flipbox__back .inner.mbc {
+  background-color: var(--navy) !important;
+  color: #fff !important;
+}
+
+.stm_flipbox__back.mbc p,
+.stm_flipbox__back .stm_iconbox__desc {
+  color: #fff !important;
+}
+
+[style*="#148EA6"],
+[style*="#148ea6"],
+[style*="#19b8e0"],
+[style*="#19B8E0"] {
+  color: var(--gold) !important;
+  border-color: var(--gold) !important;
+}
+
+[style*="background-color:#148EA6"],
+[style*="background-color: #148EA6"],
+[style*="background-color:#19b8e0"],
+[style*="background-color: #19b8e0"],
+[style*="background:#148EA6"],
+[style*="background:#19b8e0"] {
+  background-color: var(--navy) !important;
+}
+
+/* ── Botões ── */
+.btn_solid,
+.wpcf7-submit,
+input[type="submit"],
+.search-submit,
+.stm_cta__link .btn,
+.stm_cta__link a {
+  font-family: var(--font-secondary) !important;
+  font-size: 14px !important;
+  letter-spacing: 1.5px !important;
+  text-transform: uppercase !important;
+  font-weight: 500 !important;
+  background: var(--navy) !important;
+  border-color: var(--navy) !important;
+  color: #fff !important;
+  padding: 14px 30px !important;
+  border-radius: 0 !important;
+  transition: background 0.25s !important;
+}
+
+.btn_solid:hover,
+.wpcf7-submit:hover,
+input[type="submit"]:hover,
+.stm_cta__link .btn:hover,
+.stm_cta__link a:hover {
+  background: var(--navy-dark) !important;
+  border-color: var(--navy-dark) !important;
+  color: #fff !important;
+}
+
+.vc_btn3-style-outline-custom,
+.vc_btn3-style-outline,
+a.vc_general.vc_btn3-style-outline-custom {
+  font-family: var(--font-secondary) !important;
+  font-size: 14px !important;
+  letter-spacing: 1.5px !important;
+  text-transform: uppercase !important;
+  background: transparent !important;
+  border: 1.5px solid var(--gold) !important;
+  color: var(--gold-dark) !important;
+  border-radius: 40px !important;
+  padding: 12px 28px !important;
+}
+
+.vc_btn3-style-outline-custom:hover,
+a.vc_general.vc_btn3-style-outline-custom:hover {
+  background: var(--gold) !important;
+  border-color: var(--gold) !important;
+  color: #fff !important;
+}
+
+.btn_white,
+.stm_cta__link .btn_white {
+  background: var(--gold) !important;
+  border-color: var(--gold) !important;
+  color: #fff !important;
+}
+
+.btn_white:hover {
+  background: var(--gold-dark) !important;
+  border-color: var(--gold-dark) !important;
+  color: #fff !important;
+}
+
+/* ── CTA banner ── */
+.stm_cta,
+.stm_cta.style_1 {
+  background-color: var(--navy) !important;
+  border-radius: 60px !important;
+  padding: 30px 46px !important;
+}
+
+.stm_cta__content h3,
+.stm_cta__content h3 span,
+.stm_cta__content strong {
+  color: #fff !important;
+  font-family: var(--font-display) !important;
+  font-size: 27px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1px !important;
+  font-weight: 600 !important;
+}
+
+.stm_cta__link .btn,
+.stm_cta__link a {
+  background: var(--gold) !important;
+  border-color: var(--gold) !important;
+  color: #fff !important;
+  border-radius: 0 !important;
+}
+
+.stm_cta__link .btn:hover,
+.stm_cta__link a:hover {
+  background: var(--gold-dark) !important;
+  border-color: var(--gold-dark) !important;
+}
+
+/* ── Cards / iconboxes ── */
+.stm_iconbox,
+.stm_flipbox {
+  border: 1px solid var(--card-border);
+  background: var(--bg);
+  transition: box-shadow 0.3s, transform 0.3s;
+}
+
+.stm_iconbox:hover,
+.stm_flipbox:hover {
+  box-shadow: var(--token-shadow-lg);
+  transform: translateY(-5px);
+}
+
+.stm_iconbox__icon i,
+.stm_iconbox__icon .stmicon,
+.stm_iconbox .custom {
+  color: var(--navy) !important;
+}
+
+.stm_iconbox__text h5,
+.stm_iconbox__text .mtc_b,
+span.mtc_b {
+  font-family: var(--font-display) !important;
+  font-size: 22px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 2px !important;
+  color: var(--navy) !important;
+  font-weight: 600 !important;
+}
+
+.stm_iconbox__desc,
+.stm_iconbox__desc div,
+.stm_iconbox__desc p {
+  font-size: 16px !important;
+  color: var(--text-soft) !important;
+  line-height: 1.68 !important;
+}
+
+/* ── Títulos de secção ── */
+.vc_custom_heading.text-center,
+.vc_custom_heading.text-uppercase,
+h2.vc_custom_heading,
+h3.vc_custom_heading {
+  font-family: var(--font-display) !important;
+  color: var(--navy) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 2px !important;
+}
+
+/* ── Formulários ── */
+.wpcf7-form input[type="text"],
+.wpcf7-form input[type="email"],
+.wpcf7-form input[type="tel"],
+.wpcf7-form textarea,
+.wpcf7-form select {
+  border: 1px solid var(--border) !important;
+  background: var(--bg) !important;
+  padding: 13px 16px !important;
+  font-family: var(--font-secondary) !important;
+  font-size: 16px !important;
+  color: var(--text) !important;
+  border-radius: 2px !important;
+}
+
+.wpcf7-form input:focus,
+.wpcf7-form textarea:focus,
+.wpcf7-form select:focus {
+  border-color: var(--gold) !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* ── Footer ── */
+.stm-footer,
+footer.stm-footer {
+  background: var(--navy) !important;
+  color: #cfd6e2 !important;
+}
+
+.stm-footer .widgettitle,
+.stm-footer .widget-footer-title h4,
+.stm-footer h4 {
+  color: #fff !important;
+  font-family: var(--font-display) !important;
+  font-size: 17px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1.5px !important;
+}
+
+.stm-footer .widgettitle::after,
+.stm-footer .widget-footer-title h4::after {
+  content: "";
+  display: block;
+  width: 40px;
+  height: 2px;
+  background: var(--gold);
+  margin-top: 10px;
+}
+
+.stm-footer,
+.stm-footer p,
+.stm-footer .textwidget {
+  color: #b9c2d3 !important;
+  font-size: 15.5px !important;
+}
+
+.stm-footer a {
+  color: #b9c2d3 !important;
+}
+
+.stm-footer a:hover {
+  color: var(--gold-light) !important;
+}
+
+.stm-footer__bottom,
+.stm_bottom_copyright {
+  color: #8b96ac !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* ── Hero / slider text ── */
+sr7-txt,
+.sr7-layer,
+sr7-slide h2,
+sr7-slide .sr7-layer {
+  font-family: var(--font-display) !important;
+}
+
+/* ── Mobile menu — dropdowns acessíveis ── */
+@media (max-width: 991px) {
+  .stm-header.active .stm-navigation > ul,
+  .stm-header.active ul.stm-menu {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .stm-header .sub-menu {
+    position: static !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+    box-shadow: none !important;
+    border-top: none !important;
+    display: none !important;
+    background: var(--bg-soft) !important;
+    min-width: 100% !important;
+    left: 0 !important;
+    padding: 0 !important;
+  }
+
+  .stm-header li.open > .sub-menu,
+  .stm-header li.menu-item-has-children.open > .sub-menu {
+    display: block !important;
+  }
+
+  .stm-header .stm-navigation > ul > li > a,
+  .stm-header ul.stm-menu > li > a {
+    padding: 14px 26px !important;
+    display: block !important;
+    border-bottom: 1px solid var(--border);
+  }
+}

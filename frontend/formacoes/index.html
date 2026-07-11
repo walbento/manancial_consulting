@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Formações — AON Manancial Consulting</title>
+<meta name="description" content="Programas de formação da AON Manancial Consulting: áreas temáticas, modalidades e metodologias para o desenvolvimento das equipas angolanas.">
+<link rel="stylesheet" href="/css/pages/home.css">
+<link rel="icon" href="/assets/images/logo-manancial.png" type="image/png">
+<style>
+  /* ---- Formações: estilos específicos ---- */
+
+  /* intro statement */
+  .statement-band{background:linear-gradient(150deg,#0c2440 0%,#123a5e 55%,#0a1e37 100%);padding:80px 0}
+  .statement-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+  .statement-inner blockquote{
+    font-family:'Cormorant Garamond',serif;font-size:clamp(1.4rem,2.8vw,2.2rem);
+    font-style:italic;font-weight:400;color:var(--white);line-height:1.5;margin:0;
+    border-left:3px solid var(--gold-soft);padding-left:32px;
+  }
+  .statement-inner p{color:rgba(255,255,255,.72);font-size:1rem;line-height:1.8}
+
+  /* áreas de formação */
+  .areas-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:rgba(18,58,94,.08);border:1px solid rgba(18,58,94,.08)}
+  .area-card{background:var(--white);padding:32px 28px;display:flex;flex-direction:column;gap:14px;transition:background .25s}
+  .area-card:hover{background:var(--paper)}
+  .area-icon{width:44px;height:44px;border-radius:50%;background:var(--mist);display:flex;align-items:center;justify-content:center;transition:background .3s}
+  .area-card:hover .area-icon{background:var(--navy)}
+  .area-icon svg{width:20px;height:20px;stroke:var(--navy);stroke-width:1.4;fill:none;transition:stroke .3s}
+  .area-card:hover .area-icon svg{stroke:var(--gold-soft)}
+  .area-card h3{font-family:'Inter',sans-serif;font-size:.95rem;font-weight:700;color:var(--navy);margin:0}
+  .area-card p{font-size:.85rem;color:var(--ink-soft);line-height:1.6;margin:0;flex:1}
+  .area-card a{font-size:.78rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);text-decoration:none;display:flex;align-items:center;gap:6px;transition:gap .2s,color .2s;margin-top:4px}
+  .area-card a:hover{gap:10px;color:var(--gold-deep)}
+
+  /* modalidades */
+  .modal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+  .modal-card{border:1px solid rgba(18,58,94,.1);border-radius:3px;padding:36px 32px;transition:box-shadow .3s,transform .3s}
+  .modal-card:hover{box-shadow:0 8px 40px rgba(12,36,64,.1);transform:translateY(-3px)}
+  .modal-num{font-family:'Cormorant Garamond',serif;font-size:2.4rem;font-weight:600;color:rgba(18,58,94,.12);line-height:1;margin-bottom:12px}
+  .modal-card h3{font-size:1.1rem;margin-bottom:10px}
+  .modal-card p{font-size:.9rem;color:var(--ink-soft);line-height:1.7}
+
+  /* metodologias */
+  .metod-band{background:var(--paper);padding:100px 0}
+  .metod-layout{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+  .metod-layout h2{font-size:clamp(1.8rem,3vw,2.6rem);margin-bottom:20px}
+  .metod-layout .lead{color:var(--ink-soft);font-size:1.02rem;line-height:1.8;margin-bottom:32px}
+  .metod-steps{display:flex;flex-direction:column;gap:24px}
+  .metod-step{display:flex;gap:20px;align-items:flex-start;padding:24px;border:1px solid rgba(18,58,94,.1);background:var(--white);border-radius:3px}
+  .metod-step-num{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:600;color:var(--gold-soft);line-height:1;flex-shrink:0;width:32px}
+  .metod-step h4{font-family:'Inter',sans-serif;font-size:.85rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--navy);margin-bottom:6px}
+  .metod-step p{font-size:.88rem;color:var(--ink-soft);line-height:1.65;margin:0}
+  .metod-panel{background:linear-gradient(150deg,#0c2440 0%,#123a5e 55%,#0a1e37 100%);border-radius:3px;padding:44px 40px;color:var(--white)}
+  .metod-panel h3{color:var(--white);font-size:1.5rem;margin-bottom:16px}
+  .metod-panel p{color:rgba(255,255,255,.72);font-size:.93rem;line-height:1.75;margin-bottom:24px}
+  .metod-panel ul{list-style:none;padding:0;display:flex;flex-direction:column;gap:10px;margin-bottom:32px}
+  .metod-panel ul li{color:rgba(255,255,255,.75);font-size:.88rem;display:flex;gap:10px;align-items:flex-start}
+  .metod-panel ul li::before{content:"—";color:var(--gold-soft);flex-shrink:0}
+
+  @media(max-width:1200px){.areas-grid{grid-template-columns:repeat(3,1fr)}}
+  @media(max-width:960px){
+    .areas-grid{grid-template-columns:1fr 1fr}
+    .modal-grid{grid-template-columns:1fr 1fr}
+    .statement-inner,.metod-layout{grid-template-columns:1fr;gap:48px}
+    .statement-inner blockquote{border-left:none;border-top:3px solid var(--gold-soft);padding-left:0;padding-top:24px}
+    .metod-band{padding:72px 0}
+    .statement-band{padding:60px 0}
+  }
+  @media(max-width:640px){
+    .areas-grid{grid-template-columns:1fr}
+    .modal-grid{grid-template-columns:1fr}
+    .area-card{padding:24px 20px}
+    .modal-card{padding:28px 22px}
+    .metod-step{padding:18px 16px;gap:14px}
+    .metod-panel{padding:28px 22px}
+  }
+</style>
+<style>/* mc-shell-v2 */
+/* Páginas internas — esconder elementos WordPress */
+.stm-header,.stm-footer,.stm-header__overlay,.pearl_arrow_top,#searchModal{display:none!important}
+#wrapper{padding:0!important}
+/* Neutralizar Bootstrap/Pearl: repor base tipográfica Manancial */
+html{font-size:16px!important}
+body{font-size:16px!important;font-family:'Inter',sans-serif!important;line-height:1.6!important;color:#142433!important;background:#fff!important}
+/* Links — evitar azul Bootstrap dentro do rodapé */
+footer a{color:rgba(255,255,255,.62)!important}
+footer a:hover{color:#d9c398!important}
+footer ul li{color:rgba(255,255,255,.62)!important}
+/* Tipografia do conteúdo interno */
+.site-content{font-family:"Inter",sans-serif;color:#1a2235;padding:48px 32px 80px;max-width:1240px;margin:0 auto}
+.site-content h1,.site-content h2,.site-content h3,.site-content h4,
+.site-content .stm_titlebox__title,.site-content .vc_custom_heading{
+  font-family:"Cormorant Garamond",Georgia,serif!important;color:#1a2235!important}
+</style>
+</head>
+<body>
+
+<header id="hdr">
+  <div class="wrap nav">
+    <a href="/" class="brand" aria-label="AON Manancial Consulting — início">
+      <img class="logo-light" src="/assets/images/logo-manancial-light.png" alt="AON Manancial">
+      <img class="logo-dark" src="/assets/images/logo-manancial-dark.png" alt="AON Manancial">
+      <span class="bt"><b>AON Manancial</b><span>Consulting</span></span>
+    </a>
+    <nav>
+      <ul>
+        <li><a href="/quem-somos/">Quem Somos</a></li>
+        <li class="has-dropdown">
+          <a href="/formacoes/" aria-haspopup="true" aria-expanded="false" class="active">O que fazemos <svg class="care" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></a>
+          <ul class="dropdown">
+            <li>
+              <a href="/formacoes/">
+                <span class="dd-icon"><svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2zM22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></span>
+                <span class="dd-label"><b>Formações</b><small>Programas de desenvolvimento</small></span>
+              </a>
+            </li>
+            <li class="dropdown-sep"></li>
+            <li>
+              <a href="/servicos/">
+                <span class="dd-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></span>
+                <span class="dd-label"><b>Serviços</b><small>Auditoria, Fiscal, Advisory</small></span>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li><a href="/servicos/">Serviços</a></li>
+        <li><a href="/perspectivas/">Perspectivas</a></li>
+        <li><a href="/contatos/">Contactos</a></li>
+      </ul>
+    </nav>
+    <div class="nav-cta">
+      <a href="/contatos/" class="btn nav-btn">Fale Connosco <span class="arw">→</span></a>
+      <button class="burger" id="burger" aria-label="Abrir menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+  <div class="mobile-menu" id="mm">
+    <a href="/quem-somos/">Quem Somos</a>
+    <details class="mm-dropdown" open>
+      <summary>O que fazemos <svg class="care" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></summary>
+      <a href="/formacoes/">Formações</a>
+    </details>
+    <a href="/servicos/">Serviços</a>
+    <a href="/perspectivas/">Perspectivas</a>
+    <a href="/contatos/">Contactos</a>
+    <a href="/contatos/" class="btn btn-gold">Fale Connosco →</a>
+  </div>
+</header>
+
+<!-- ===================== PAGE HERO ===================== -->
+<section class="page-hero on-dark" id="top">
+  <div class="wrap reveal">
+    <span class="eyebrow">Formações</span>
+    <h1>A formação é a nascente do desenvolvimento humano.</h1>
+    <p>Programas de desenvolvimento desenhados para as organizações angolanas — nas áreas técnicas, de liderança, gestão e competências comportamentais que mais impactam os resultados.</p>
+  </div>
+</section>
+
+<!-- ===================== NAV INTERNA ===================== -->
+<div class="form-nav">
+  <div class="wrap">
+    <nav class="form-nav-inner" aria-label="Navegar por secção">
+      <a href="#areas" class="active">Áreas de Formação</a>
+      <a href="#modalidades">Modalidades</a>
+      <a href="#metodologias">Metodologia</a>
+    </nav>
+  </div>
+</div>
+
+<!-- ===================== STATEMENT ===================== -->
+<section class="statement-band">
+  <div class="wrap">
+    <div class="statement-inner reveal">
+      <blockquote>
+        "A Formação é um instrumento poderoso que ajuda a Pessoa a diminuir a diferença entre aquilo que ela é e aquilo que é capaz de vir a ser."
+      </blockquote>
+      <div>
+        <span class="eyebrow">A nossa visão</span>
+        <p>Na AON Manancial Consulting, a formação não é um custo — é um investimento estratégico no capital humano das organizações. Cada programa é concebido para produzir mudanças reais e mensuráveis no desempenho individual e colectivo.</p>
+        <p style="margin-top:16px">Trabalhamos em estreita colaboração com as equipas de RH e liderança dos nossos clientes para garantir que cada acção formativa é pertinente, bem calibrada e orientada para resultados.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== ÁREAS DE FORMAÇÃO ===================== -->
+<section class="pad" id="areas">
+  <div class="wrap">
+    <div class="sec-head reveal" style="margin-bottom:48px">
+      <span class="eyebrow">Áreas de Formação</span>
+      <h2>11 áreas temáticas para o desenvolvimento das suas equipas.</h2>
+      <p>Os nossos programas cobrem as competências técnicas e comportamentais mais relevantes para as organizações angolanas — da liderança à fiscalidade, da comunicação à gestão da mudança.</p>
+    </div>
+    <div class="areas-grid">
+
+      <div class="area-card reveal">
+        <div class="area-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+        <h3>Técnica (P&amp;S)</h3>
+        <p>Competências técnicas específicas nas áreas de Produtos e Serviços, adaptadas ao contexto e às necessidades da organização.</p>
+        <a href="/contatos/">Saber mais <span>→</span></a>
+      </div>
+
+      <div class="area-card reveal d1">
+        <div class="area-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <h3>Pedagógica</h3>
+        <p>Formação para formadores e responsáveis de desenvolvimento — metodologias de ensino, design instrucional e avaliação da eficácia formativa.</p>
+        <a href="/contatos/">Saber mais <span>→</span></a>
+      </div>
+
+      <div class="area-card reveal d2">
+        <div class="area-icon"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+        <h3>Trabalho em Equipa</h3>
+        <p>Dinâmicas de grupo, comunicação intra-equipa, gestão de conflitos e colaboração para equipas de alto desempenho.</p>
+        <a href="/contatos/">Saber mais <span>→</span></a>
+      </div>
+
+      <div class="area-card reveal">
+        <div class="area-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
+        <h3>Gestão de Capital Humano</h3>
+        <p>Recrutamento, avaliação de desempenho, desenvolvimento de carreiras e gestão estratégica de pessoas nas organizações angolanas.</p>
+        <a href="/contatos/">Saber mais <span>→</span></a>
+      </div>
+
+      <div class="area-card reveal d1">
+        <div class="area-icon"><svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg></div>
+        <h3>Gestão da Mudança</h3>
+        <p>Ferramentas e frameworks para liderar processos de transformação organizacional de forma estruturada, sustentada e com menor resistência.</p>
+        <a href="/contatos/">Saber mais <span>→</span></a>
+      </div>
+
+      <div class="area-card reveal d2">
+        <div class="area-icon"><svg viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></div>
+        <h3>Auditoria</h3>
+        <p>Fundamentos e técnicas de auditoria interna e externa, normas ISA, controlo interno e gestão de risco para profissionais financeiros.</p>
+        <a href="/contatos/">Saber mais <span>→</span></a>
+      </div>
+
+      <div class="area-card reveal">
+        <div class="area-icon"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14M22 4L12 14.01l-3-3"/></svg></div>
+        <h3>Qualidade de Serviço</h3>
+        <p>Padrões de excelência no atendimento, gestão da experiência do cliente e melhoria contínua dos processos de serviço.</p>
+        <a href="/contatos/">Saber mais <span>→</span></a>
+      </div>
+
+      <div class="area-card reveal d1">
+        <div class="area-icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+        <h3>Comunicação e Relações Interpessoais</h3>
+        <p>Comunicação assertiva, escuta activa, gestão de conversas difíceis e construção de relações profissionais de confiança.</p>
+        <a href="/contatos/">Saber mais <span>→</span></a>
+      </div>
+
+      <div class="area-card reveal d2">
+        <div class="area-icon"><svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+        <h3>Metodologia e Organização do Trabalho</h3>
+        <p>Gestão do tempo, priorização, produtividade pessoal e métodos de trabalho para maior eficiência e qualidade de entrega.</p>
+        <a href="/contatos/">Saber mais <span>→</span></a>
+      </div>
+
+      <div class="area-card reveal">
+        <div class="area-icon"><svg viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+        <h3>Venda e Negociação</h3>
+        <p>Técnicas de venda consultiva, gestão do ciclo de vendas, negociação de valor e fidelização de clientes no contexto angolano.</p>
+        <a href="/contatos/">Saber mais <span>→</span></a>
+      </div>
+
+      <div class="area-card reveal d1">
+        <div class="area-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <h3>Liderança</h3>
+        <p>Estilos de liderança, gestão de equipas, motivação, delegação eficaz e desenvolvimento de competências de liderança situacional.</p>
+        <a href="/contatos/">Saber mais <span>→</span></a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===================== MODALIDADES ===================== -->
+<section class="pad" id="modalidades" style="background:var(--paper);padding-top:0">
+  <div class="wrap">
+    <div class="sec-head reveal" style="text-align:center;margin-bottom:48px">
+      <span class="eyebrow center">Modalidades Formativas</span>
+      <h2>Formação adaptada ao seu contexto e disponibilidade.</h2>
+      <p>Oferecemos 7 modalidades distintas para garantir que a formação é acessível, eficaz e alinhada com a realidade operacional da sua organização.</p>
+    </div>
+    <div class="modal-grid">
+
+      <div class="modal-card reveal">
+        <div class="modal-num">01</div>
+        <h3>Formação em Contexto de Sala</h3>
+        <p>A modalidade clássica, com formador presencial e grupo. Ideal para programas que beneficiam de interacção directa, dinâmicas de grupo e debate em tempo real.</p>
+      </div>
+
+      <div class="modal-card reveal d1">
+        <div class="modal-num">02</div>
+        <h3>Formação On Job</h3>
+        <p>Aprendizagem em contexto real de trabalho, com aplicação imediata dos conteúdos nas tarefas e desafios do dia-a-dia do colaborador.</p>
+      </div>
+
+      <div class="modal-card reveal d2">
+        <div class="modal-num">03</div>
+        <h3>Team Building</h3>
+        <p>Actividades experienciais desenhadas para fortalecer a coesão, comunicação e confiança entre os membros de uma equipa — dentro ou fora da organização.</p>
+      </div>
+
+      <div class="modal-card reveal">
+        <div class="modal-num">04</div>
+        <h3>E-Learning &amp; B-Learning</h3>
+        <p>Programas 100% online (e-learning) ou em regime misto (b-learning), com acesso a conteúdos digitais interactivos e sessões síncronas com formador.</p>
+      </div>
+
+      <div class="modal-card reveal d1">
+        <div class="modal-num">05</div>
+        <h3>E-Training &amp; B-Training</h3>
+        <p>Formação prática em ambiente digital, com simulações, exercícios guiados e feedback personalizado — focada no desenvolvimento de competências operacionais.</p>
+      </div>
+
+      <div class="modal-card reveal d2">
+        <div class="modal-num">06</div>
+        <h3>Formação à Distância</h3>
+        <p>Programas síncronos por videoconferência, que eliminam barreiras geográficas e permitem formar equipas dispersas por diferentes localizações em Angola.</p>
+      </div>
+
+      <div class="modal-card reveal">
+        <div class="modal-num">07</div>
+        <h3>Workshops Temáticos</h3>
+        <p>Sessões intensivas de curta duração (meio-dia a dois dias) sobre temas específicos e de alta relevância, com forte componente prática e aplicação imediata.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===================== METODOLOGIA ===================== -->
+<section class="metod-band" id="metodologias">
+  <div class="wrap">
+    <div class="metod-layout reveal">
+      <div>
+        <span class="eyebrow">A nossa metodologia</span>
+        <h2>A formação como laboratório de mudança real.</h2>
+        <p class="lead">A nossa abordagem metodológica assenta na convicção de que a formação só cria valor quando é vivida como experiência — não apenas transmitida como informação. Cada programa é um laboratório onde os participantes experimentam, erram, reflectem e melhoram.</p>
+        <div class="metod-steps">
+          <div class="metod-step">
+            <span class="metod-step-num">01</span>
+            <div>
+              <h4>Diagnóstico</h4>
+              <p>Análise das necessidades de formação da organização, das equipas e dos indivíduos — identificando os gaps entre o desempenho actual e o desejado.</p>
+            </div>
+          </div>
+          <div class="metod-step">
+            <span class="metod-step-num">02</span>
+            <div>
+              <h4>Design do Programa</h4>
+              <p>Concepção personalizada dos conteúdos, metodologias, materiais e avaliações — sempre orientada para os objectivos de negócio definidos.</p>
+            </div>
+          </div>
+          <div class="metod-step">
+            <span class="metod-step-num">03</span>
+            <div>
+              <h4>Implementação</h4>
+              <p>Execução das sessões por formadores experientes, com utilização de metodologias activas: roleplay, estudos de caso, simulações e projectos reais.</p>
+            </div>
+          </div>
+          <div class="metod-step">
+            <span class="metod-step-num">04</span>
+            <div>
+              <h4>Avaliação &amp; Impacto</h4>
+              <p>Medição do impacto formativo ao nível da satisfação, aprendizagem, comportamento e resultados de negócio — com relatório final de recomendações.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="metod-panel">
+          <span class="eyebrow">Porquê a AON Manancial?</span>
+          <h3>Formação que transforma, não apenas informa.</h3>
+          <p>A nossa equipa de formadores combina experiência prática nas áreas que lecciona com competências pedagógicas avançadas — garantindo programas que criam impacto real e duradouro.</p>
+          <ul>
+            <li>Formadores com experiência de campo nas organizações angolanas</li>
+            <li>Metodologias activas e participativas</li>
+            <li>Conteúdos 100% personalizáveis ao contexto do cliente</li>
+            <li>Acompanhamento pós-formação para consolidação</li>
+            <li>Relatórios de impacto e retorno do investimento formativo</li>
+            <li>Disponibilidade em todo o território nacional</li>
+          </ul>
+          <a href="/contatos/" class="btn btn-gold">Solicitar proposta de formação <span class="arw">→</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CTA ===================== -->
+<section class="reveal" style="padding:100px 0;text-align:center">
+  <div class="wrap">
+    <span class="eyebrow center">Comece hoje</span>
+    <h2 style="font-size:clamp(2rem,3.6vw,2.9rem);margin-bottom:18px">Pretende desenvolver o capital humano da sua organização?</h2>
+    <p style="color:var(--ink-soft);font-size:1.05rem;max-width:580px;margin:0 auto 40px">Fale connosco e identifiquemos juntos o programa de formação mais adequado às necessidades e objectivos da sua equipa.</p>
+    <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
+      <a href="/contatos/" class="btn btn-gold">Solicitar proposta <span class="arw">→</span></a>
+      <a href="/servicos/" class="btn btn-ghost" style="color:var(--navy);border-color:rgba(18,58,94,.3)">Ver todos os serviços</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <div class="fmark"><b>AON Manancial</b><span>Consulting</span></div>
+        <p>Consultoria financeira e de gestão ao serviço das organizações angolanas. Rigor, proximidade e uma fonte contínua de valor.</p>
+      </div>
+      <div>
+        <h4>Serviços</h4>
+        <ul>
+          <li><a href="/servicos/#auditoria">Auditoria &amp; Assurance</a></li>
+          <li><a href="/servicos/#fiscalidade">Fiscalidade</a></li>
+          <li><a href="/servicos/#gestao">Consultoria de Gestão</a></li>
+          <li><a href="/servicos/#advisory">Advisory &amp; Transacções</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Empresa</h4>
+        <ul>
+          <li><a href="/quem-somos/">Quem Somos</a></li>
+          <li><a href="/perspectivas/">Perspectivas</a></li>
+          <li><a href="#">Carreiras</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contactos</h4>
+        <ul>
+          <li>Luanda, Angola</li>
+          <li><a href="mailto:geral@aonmanancial.co.ao">geral@aonmanancial.co.ao</a></li>
+          <li><a href="tel:+244900000000">+244 900 000 000</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 AON Manancial Consulting. Todos os direitos reservados.</span>
+      <div class="foot-social">
+        <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4 0 4.75 2.65 4.75 6.1V21H20v-5.5c0-1.3-.02-3-1.85-3-1.85 0-2.13 1.44-2.13 2.9V21H12z"/></svg></a>
+        <a href="#" aria-label="Email"><svg viewBox="0 0 24 24"><path d="M3 5h18v14H3zM3 5l9 7 9-7"/></svg></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="/js/home.js" defer></script>
+<script>
+// Highlight active anchor in form-nav on scroll
+(function(){
+  const sections=['areas','modalidades','metodologias'];
+  const links=document.querySelectorAll('.form-nav-inner a');
+  function onScroll(){
+    let current='areas';
+    sections.forEach(id=>{
+      const el=document.getElementById(id);
+      if(el&&el.getBoundingClientRect().top<=140)current=id;
+    });
+    links.forEach(a=>{
+      a.classList.toggle('active',a.getAttribute('href')==='#'+current);
+    });
+  }
+  window.addEventListener('scroll',onScroll,{passive:true});
+  onScroll();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 120" role="img" aria-label="AON Manancial Consulting">
+  <defs>
+    <linearGradient id="drop" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#00b6ec"/>
+      <stop offset="100%" stop-color="#1a5aa0"/>
+    </linearGradient>
+  </defs>
+  <text x="8" y="72" font-family="Georgia, 'Times New Roman', serif" font-size="72" font-weight="700" fill="#182a4d">A</text>
+  <circle cx="108" cy="52" r="34" fill="none" stroke="#182a4d" stroke-width="6"/>
+  <path d="M108 30 C100 42 96 50 108 62 C120 50 116 42 108 30 Z" fill="url(#drop)"/>
+  <ellipse cx="108" cy="72" rx="18" ry="5" fill="none" stroke="#1a5aa0" stroke-width="2" opacity="0.7"/>
+  <ellipse cx="108" cy="80" rx="24" ry="4" fill="none" stroke="#00b6ec" stroke-width="1.5" opacity="0.5"/>
+  <text x="148" y="72" font-family="Georgia, 'Times New Roman', serif" font-size="72" font-weight="700" fill="#182a4d">N</text>
+  <path d="M178 22 L178 72 L198 42 L198 72" fill="none" stroke="#b8935a" stroke-width="7" stroke-linecap="square"/>
+  <text x="8" y="98" font-family="Georgia, serif" font-size="14" letter-spacing="3" fill="#182a4d">AON MANANCIAL</text>
+  <line x1="8" y1="106" x2="130" y2="106" stroke="#cbab78" stroke-width="1"/>
+  <text x="140" y="106" font-family="Georgia, serif" font-size="11" letter-spacing="4" fill="#a07c44">CONSULTING</text>
+  <line x1="250" y1="106" x2="370" y2="106" stroke="#cbab78" stroke-width="1"/>
+</svg>
