@@ -8,7 +8,19 @@ const SOURCE = path.join(ROOT, 'site', 'www.ofconsultores.com');
 const FRONTEND = path.join(ROOT, 'frontend');
 const DATA = path.join(FRONTEND, 'data');
 
-const PRESERVE_TOP_LEVEL = new Set(['css', 'js', 'partials', 'data', 'assets']);
+// Folders/files managed by the new Manancial design — never overwrite from site/
+const PRESERVE_TOP_LEVEL = new Set([
+  'css', 'js', 'partials', 'data', 'assets',
+  // New Manancial homepage
+  'index.html',
+  // New Manancial internal pages
+  'quem-somos',
+  'perspectivas',
+  'servicos',
+  'formacoes',
+  // Updated contact page (new Manancial design)
+  'contatos',
+]);
 
 /** Only skip frontend-owned top-level folders — never wp-content/.../css or .../js */
 function copyDir(src, dest, isFrontendRoot = false) {
@@ -103,7 +115,7 @@ function injectFrontendAssets(html) {
 console.log('Copying mirrored site to frontend/...');
 if (fs.existsSync(FRONTEND)) {
   for (const entry of fs.readdirSync(FRONTEND)) {
-    if (['css', 'js', 'partials', 'data', 'assets'].includes(entry)) continue;
+    if (PRESERVE_TOP_LEVEL.has(entry)) continue;
     const full = path.join(FRONTEND, entry);
     fs.rmSync(full, { recursive: true, force: true });
   }
