@@ -404,16 +404,17 @@
   .form-card>p{color:var(--ink-soft);margin-bottom:36px}
   .field{margin-bottom:22px}
   .field label{display:block;font-size:.78rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:10px}
-  .field input,.field textarea{
+  .field input,.field textarea,.field select{
     width:100%;font-family:'Inter',sans-serif;font-size:.96rem;color:var(--ink);
     padding:14px 16px;border:1px solid rgba(18,58,94,.18);border-radius:2px;background:var(--white);
     transition:border-color .3s,box-shadow .3s;
   }
-  .field input:focus,.field textarea:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(184,152,94,.16)}
+  .field input:focus,.field textarea:focus,.field select:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(184,152,94,.16)}
   .field textarea{resize:vertical;min-height:150px;line-height:1.6}
   .form-row{display:grid;grid-template-columns:1fr 1fr;gap:20px}
   .form-msg{margin-top:20px;font-size:.9rem;color:var(--ink-soft);min-height:1.4em}
   .form-msg.ok{color:var(--gold-deep);font-weight:600}
+  .form-msg.err{color:#b3261e;font-weight:600}
 
   @media(max-width:960px){
     .contact-grid{grid-template-columns:1fr}

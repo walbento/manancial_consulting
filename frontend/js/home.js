@@ -47,11 +47,34 @@
   const contactForm=document.getElementById('contactForm');
   if(contactForm){
     const formMsg=document.getElementById('formMsg');
-    contactForm.addEventListener('submit',(e)=>{
+    const submitBtn=contactForm.querySelector('[type="submit"]');
+    contactForm.addEventListener('submit', async (e)=>{
       e.preventDefault();
       if(!contactForm.checkValidity()){contactForm.reportValidity();return;}
-      formMsg.textContent='Obrigado! A sua mensagem foi enviada. A nossa equipa entrará em contacto brevemente.';
-      formMsg.classList.add('ok');
-      contactForm.reset();
+      const fd=new FormData(contactForm);
+      const payload={
+        nome: fd.get('nome') || '',
+        email: fd.get('email') || '',
+        telefone: fd.get('telefone') || '',
+        empresa: fd.get('empresa') || '',
+        cargo: fd.get('cargo') || '',
+        tipo_empresa: fd.get('tipo_empresa') || '',
+        assunto: fd.get('assunto') || '',
+        mensagem: fd.get('mensagem') || '',
+        'aceite-termos': fd.get('aceite-termos') || '',
+      };
+      formMsg.classList.remove('ok','err');
+      if(submitBtn) submitBtn.disabled=true;
+      try{
+        await window.SiteAPI.submitContact(payload);
+        formMsg.textContent='Obrigado! A sua mensagem foi enviada. A nossa equipa entrará em contacto brevemente.';
+        formMsg.classList.add('ok');
+        contactForm.reset();
+      }catch(err){
+        formMsg.textContent='Não foi possível enviar a mensagem. Tente novamente ou contacte-nos por email.';
+        formMsg.classList.add('err');
+      }finally{
+        if(submitBtn) submitBtn.disabled=false;
+      }
     });
   }

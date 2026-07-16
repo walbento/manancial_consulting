@@ -44,7 +44,13 @@
 
   async function submitContact(data) {
     if (USE_LOCAL_DATA) {
-      console.info('[api] Contact form will use Netlify Forms until PHP backend is ready.', data);
+      const body = new URLSearchParams({ 'form-name': 'contact', ...data }).toString();
+      const res = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body,
+      });
+      if (!res.ok) throw new Error(`Netlify form submission failed: ${res.status}`);
       return { ok: true, provider: 'netlify' };
     }
     const res = await fetch(`${API_BASE}/contact`, {
@@ -52,6 +58,7 @@
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data),
     });
+    if (!res.ok) throw new Error(`API error: /contact (${res.status})`);
     return res.json();
   }
 

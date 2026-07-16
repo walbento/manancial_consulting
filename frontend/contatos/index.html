@@ -129,16 +129,37 @@ footer ul li{color:rgba(255,255,255,.62)!important}
               <input type="email" id="cf-email" name="email" placeholder="voce@empresa.co.ao" required>
             </div>
           </div>
-          <!--Alteração feita por Suri Mukeba para acrescentar dois campos obrigatórios: Empresa e NIF  -->
-           <div class="field">
-            <label for="cf-assunto">Empresa</label>
-            <input type="text" id="cf-empresa" name="empresa" placeholder="Nome da empresa?" required>
+          <div class="form-row">
+            <div class="field">
+              <label for="cf-telefone">Telefone</label>
+              <input type="tel" id="cf-telefone" name="telefone" placeholder="+244 9XX XXX XXX">
+            </div>
+            <div class="field">
+              <label for="cf-empresa">Empresa</label>
+              <input type="text" id="cf-empresa" name="empresa" placeholder="Nome da empresa" required>
+            </div>
           </div>
-          <div class="field">
-            <label for="cf-assunto">NIF</label>
-            <input type="text" id="cf-nif" name="nif" placeholder="NIF da empresa?" required>
+          <div class="form-row">
+            <div class="field">
+              <label for="cf-nif">NIF</label>
+              <input type="text" id="cf-nif" name="nif" placeholder="NIF da empresa" required>
+            </div>
+            <div class="field">
+              <label for="cf-cargo">Cargo</label>
+              <input type="text" id="cf-cargo" name="cargo" placeholder="O seu cargo (opcional)">
+            </div>
           </div>
-          <!--Fim do acréscimo-->
+          <div class="form-row">
+            <div class="field">
+              <label for="cf-tipo-empresa">Tipo de empresa</label>
+              <select id="cf-tipo-empresa" name="tipo_empresa">
+                <option value="">Selecione (opcional)</option>
+                <option value="LDA">Lda.</option>
+                <option value="SA">S.A.</option>
+                <option value="SU">Unipessoal (S.U.)</option>
+              </select>
+            </div>
+          </div>
           <div class="field">
             <label for="cf-assunto">Assunto</label>
             <input type="text" id="cf-assunto" name="assunto" placeholder="Sobre o que quer falar?" required>
@@ -146,6 +167,12 @@ footer ul li{color:rgba(255,255,255,.62)!important}
           <div class="field">
             <label for="cf-mensagem">Mensagem</label>
             <textarea id="cf-mensagem" name="mensagem" placeholder="Escreva a sua mensagem..." required></textarea>
+          </div>
+          <div class="field">
+            <label style="display:flex;align-items:flex-start;gap:8px;text-transform:none;letter-spacing:normal;font-weight:400;color:var(--ink)">
+              <input type="checkbox" id="cf-aceite" name="aceite-termos" value="sim" required style="width:auto;margin-top:3px">
+              Aceito os <a href="/termos-condicoes/">Termos &amp; Condições</a> e a <a href="/politica-de-privacidade/">Política de Privacidade</a>
+            </label>
           </div>
           <button type="submit" class="btn btn-gold">Enviar mensagem <span class="arw">→</span></button>
           <p class="form-msg" id="formMsg" role="status" aria-live="polite"></p>
