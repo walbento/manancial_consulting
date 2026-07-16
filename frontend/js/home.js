@@ -52,27 +52,21 @@
       e.preventDefault();
       if(!contactForm.checkValidity()){contactForm.reportValidity();return;}
       const fd=new FormData(contactForm);
-      const payload={
-        nome: fd.get('nome') || '',
-        email: fd.get('email') || '',
-        telefone: fd.get('telefone') || '',
-        empresa: fd.get('empresa') || '',
-        cargo: fd.get('cargo') || '',
-        tipo_empresa: fd.get('tipo_empresa') || '',
-        assunto: fd.get('assunto') || '',
-        mensagem: fd.get('mensagem') || '',
-        'aceite-termos': fd.get('aceite-termos') || '',
-      };
+      const payload={};
+      for(const [key,value] of fd.entries()) payload[key]=value;
       formMsg.classList.remove('ok','err');
+      formMsg.hidden=true;
       if(submitBtn) submitBtn.disabled=true;
       try{
         await window.SiteAPI.submitContact(payload);
         formMsg.textContent='Obrigado! A sua mensagem foi enviada. A nossa equipa entrará em contacto brevemente.';
         formMsg.classList.add('ok');
+        formMsg.hidden=false;
         contactForm.reset();
       }catch(err){
         formMsg.textContent='Não foi possível enviar a mensagem. Tente novamente ou contacte-nos por email.';
         formMsg.classList.add('err');
+        formMsg.hidden=false;
       }finally{
         if(submitBtn) submitBtn.disabled=false;
       }

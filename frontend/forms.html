@@ -1,33 +1,10 @@
 <!DOCTYPE html>
 <html lang="pt-PT">
-<head><meta charset="UTF-8"><title>Forms</title><link rel="icon" href="/assets/images/logo-manancial.png" type="image/png">
+<head><meta charset="UTF-8"><title>Forms</title><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/css/pages/home.css">
 <link rel="icon" href="/assets/images/logo-manancial.png" type="image/png">
-<style>
-/* Páginas internas — esconder elementos WordPress */
-.stm-header,
-.stm-footer,
-.stm-header__overlay,
-.pearl_arrow_top,
-#searchModal { display: none !important; }
-#wrapper { padding: 0 !important; }
-.site-content {
-  font-family: "Inter", sans-serif;
-  color: #1a2235;
-  padding: 48px 32px 80px;
-  max-width: 1240px;
-  margin: 0 auto;
-}
-.site-content h1,
-.site-content h2,
-.site-content h3,
-.site-content h4,
-.site-content .stm_titlebox__title,
-.site-content .vc_custom_heading {
-  font-family: "Cormorant Garamond", Georgia, serif !important;
-  color: #1a2235 !important;
-}
-</style>
 <style>/* mc-shell-v2 */
 /* Páginas internas — esconder elementos WordPress */
 .stm-header,.stm-footer,.stm-header__overlay,.pearl_arrow_top,#searchModal{display:none!important}
@@ -46,7 +23,7 @@ footer ul li{color:rgba(255,255,255,.62)!important}
   font-family:"Cormorant Garamond",Georgia,serif!important;color:#1a2235!important}
 </style>
 </head>
-<body class="ref-shell">
+<body>
 <!-- ===================== HEADER ===================== -->
 <header id="hdr" class="solid">
   <div class="wrap nav">
@@ -98,22 +75,12 @@ footer ul li{color:rgba(255,255,255,.62)!important}
     <a href="/contatos/" class="btn btn-gold">Fale Connosco →</a>
   </div>
 </header>
-
 <!-- Hidden form for Netlify form detection at build time -->
 <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" hidden>
   <input type="hidden" name="form-name" value="contact" />
   <input name="bot-field" />
   <input type="text" name="nome" />
   <input type="email" name="email" />
-  <input type="tel" name="telefone" />
-  <input type="text" name="empresa" />
-  <input type="text" name="cargo" />
-  <select name="tipo_empresa">
-    <option value="">tipo de empresa</option>
-    <option value="LDA">Lda.</option>
-    <option value="SA">S.A.</option>
-    <option value="SU">Unipessoal (S.U.)</option>
-  </select>
   <input type="text" name="assunto" />
   <textarea name="mensagem"></textarea>
   <input type="checkbox" name="aceite-termos" />
@@ -125,7 +92,6 @@ footer ul li{color:rgba(255,255,255,.62)!important}
 <script src="/js/forms.js" defer></script>
 <script src="/js/main.js" defer></script>
 <script src="/js/static-fixes.js" defer></script>
-<!-- ============ FOOTER ============ -->
 <!-- ===================== FOOTER ===================== -->
 <footer>
   <div class="wrap">
