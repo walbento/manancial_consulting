@@ -94,6 +94,9 @@ function sectionFromPath(relPath) {
 }
 
 function injectFrontendAssets(html) {
+  // New Manancial design pages manage their own CSS/JS — skip legacy injection
+  if (html.includes('/css/pages/home.css')) return html;
+
   html = normalizeLegacyAssetRefs(html);
 
   const fonts = '<link rel="preconnect" href="https://fonts.googleapis.com">\n<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">';
