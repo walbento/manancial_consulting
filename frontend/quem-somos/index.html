@@ -48,27 +48,28 @@
   .cta-strip p{color:var(--ink-soft);font-size:1.05rem;max-width:540px;margin:0 auto 40px}
   .cta-actions{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
 
+  @media(max-width:1100px){
+    .values-grid[style*="repeat(5"]{grid-template-columns:repeat(3,1fr)!important}
+  }
   @media(max-width:960px){
     .about-grid{grid-template-columns:1fr;gap:48px}
     .values-grid{grid-template-columns:1fr 1fr}
-    .mission-inner{grid-template-columns:1fr;gap:48px}
+    .mission-inner{grid-template-columns:1fr;gap:40px}
     .about-visual-inner{padding:40px 32px}
     .mission-band{padding:72px 0}
   }
   @media(max-width:640px){
-    .values-grid{grid-template-columns:1fr}
+    .values-grid{grid-template-columns:1fr 1fr!important}
     .about-stat-grid{grid-template-columns:1fr 1fr}
     .about-visual-inner{padding:30px 22px}
     .about-stat b{font-size:2.4rem}
     .value-card{padding:36px 28px}
-    .mission-item{gap:14px}
-    .mission-num{font-size:1.6rem;width:28px}
     .cta-actions{flex-direction:column;align-items:center}
     .cta-actions .btn{width:100%;justify-content:center}
     .mission-band{padding:56px 0}
   }
   @media(max-width:400px){
-    .about-stat-grid{grid-template-columns:1fr 1fr;gap:20px}
+    .values-grid{grid-template-columns:1fr!important}
   }
 </style>
 <style>/* mc-shell-v2 */
@@ -146,88 +147,25 @@ footer ul li{color:rgba(255,255,255,.62)!important}
 <section class="page-hero on-dark" id="top">
   <div class="wrap reveal">
     <span class="eyebrow">Quem Somos</span>
-    <h1>Uma nascente contínua de valor para as organizações.</h1>
-    <p>Somos uma consultora financeira e de gestão dedicada ao mercado angolano. Combinamos rigor técnico com proximidade humana para ajudar as organizações a crescer com solidez.</p>
+    <h1>Transformar desafios em oportunidades de crescimento sustentável.</h1>
+    <p>Estratégias inteligentes, conhecimento aplicado e inovação contínua ao serviço das organizações em África.</p>
   </div>
 </section>
 
-<!-- ===================== SOBRE NÓS ===================== -->
+<!-- ===================== PROPÓSITO ===================== -->
 <section class="pad">
   <div class="wrap">
     <div class="about-grid reveal">
       <div class="about-text">
-        <span class="eyebrow">A nossa história</span>
-        <h2>Consultoria com raízes em Angola, visão global.</h2>
-        <p>A AON Manancial Consulting nasceu da convicção de que as organizações angolanas merecem acesso a serviços de consultoria de excelência — com o rigor das melhores práticas internacionais e a proximidade que só o conhecimento do contexto local proporciona.</p>
-        <p>Ao longo dos anos, construímos uma equipa multidisciplinar de consultores com experiência comprovada em auditoria, fiscalidade, gestão estratégica e assessoria em transacções, servindo empresas nos sectores mais dinâmicos da economia angolana.</p>
-        <p>O nosso nome é um compromisso: ser a nascente onde as organizações encontram valor, clareza e orientação para os seus desafios mais exigentes.</p>
+        <span class="eyebrow">Propósito</span>
+        <h2>O que nos move todos os dias.</h2>
+        <p>Transformar desafios em oportunidades que impulsionam o crescimento sustentável, por meio de estratégias inteligentes, conhecimento aplicado e inovação contínua, fortalecendo negócios e preparando pessoas para liderar o futuro.</p>
       </div>
       <div class="about-visual">
         <div class="about-visual-inner reveal d1">
-          <span class="eyebrow">Em números</span>
-          <p>Uma trajectória construída sobre resultados concretos e relações de confiança duradouras.</p>
-          <div class="about-stat-grid">
-            <div class="about-stat"><b>+15</b><span>Anos de experiência em Angola</span></div>
-            <div class="about-stat"><b>+200</b><span>Clientes servidos</span></div>
-            <div class="about-stat"><b>4</b><span>Áreas de serviço especializadas</span></div>
-            <div class="about-stat"><b>100%</b><span>Foco no mercado angolano</span></div>
-          </div>
+          <span class="eyebrow">Visão</span>
+          <p style="font-size:1.08rem;line-height:1.8;margin-bottom:0">Ser o catalisador do desenvolvimento sustentável e da transformação organizacional em África, gerando soluções inovadoras de impacto mensurável que fortalecem e regeneram todo o ecossistema.</p>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===================== VALORES ===================== -->
-<section class="pad" style="background:var(--paper);padding-top:0">
-  <div class="wrap">
-    <div class="sec-head reveal" style="text-align:center;margin-bottom:56px">
-      <span class="eyebrow center">Os nossos valores</span>
-      <h2>O que nos guia em cada projecto.</h2>
-      <p>Os nossos valores não são palavras numa parede — são os princípios que orientam cada decisão, cada recomendação e cada relação com os nossos clientes.</p>
-    </div>
-    <div class="values-grid">
-      <div class="value-card reveal">
-        <div class="value-icon">
-          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        </div>
-        <h3>Rigor &amp; Independência</h3>
-        <p>Actuamos com total independência e elevados padrões técnicos. Os nossos pareceres são baseados em factos, análise criteriosa e ética profissional inegociável.</p>
-      </div>
-      <div class="value-card reveal d1">
-        <div class="value-icon">
-          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-        </div>
-        <h3>Proximidade &amp; Confiança</h3>
-        <p>Construímos relações de longo prazo com os nossos clientes. Conhecemos os seus negócios em profundidade e estamos presentes nos momentos que mais importam.</p>
-      </div>
-      <div class="value-card reveal d2">
-        <div class="value-icon">
-          <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-        </div>
-        <h3>Excelência &amp; Inovação</h3>
-        <p>Investimos continuamente na actualização do conhecimento e na adopção das melhores práticas internacionais, adaptadas à realidade do mercado angolano.</p>
-      </div>
-      <div class="value-card reveal">
-        <div class="value-icon">
-          <svg viewBox="0 0 24 24"><path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zM9 9h1V7H9zm0 8h6V11H9v6zm4-8h1V7h-1z"/></svg>
-        </div>
-        <h3>Transparência</h3>
-        <p>Comunicamos de forma clara, directa e honesta — sobre os riscos, as oportunidades e os limites do que é possível alcançar.</p>
-      </div>
-      <div class="value-card reveal d1">
-        <div class="value-icon">
-          <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14M22 4L12 14.01l-3-3"/></svg>
-        </div>
-        <h3>Orientação para Resultados</h3>
-        <p>O nosso sucesso mede-se pelo sucesso dos nossos clientes. Cada projecto tem objectivos claros e a nossa equipa trabalha para os superar.</p>
-      </div>
-      <div class="value-card reveal d2">
-        <div class="value-icon">
-          <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2zM9 22V12h6v10"/></svg>
-        </div>
-        <h3>Compromisso com Angola</h3>
-        <p>Acreditamos no potencial da economia angolana e no papel transformador que a consultoria de qualidade pode ter no desenvolvimento sustentável do país.</p>
       </div>
     </div>
   </div>
@@ -238,32 +176,53 @@ footer ul li{color:rgba(255,255,255,.62)!important}
   <div class="wrap">
     <div class="mission-inner">
       <div class="reveal">
-        <span class="eyebrow">Missão &amp; Visão</span>
-        <h2>Criar valor sustentável nas organizações que servimos.</h2>
-        <p>A nossa missão é ser o parceiro de referência das organizações angolanas na gestão dos seus desafios financeiros, fiscais e estratégicos — com rigor, proximidade e uma visão orientada para o futuro.</p>
+        <span class="eyebrow">Missão</span>
+        <h2>Potenciar a competitividade sustentável das organizações em África.</h2>
       </div>
-      <div class="mission-items reveal d1">
-        <div class="mission-item">
-          <span class="mission-num">01</span>
-          <div>
-            <h4>Visão</h4>
-            <p>Ser a consultora de referência em Angola, reconhecida pela excelência técnica, pela integridade e pelo impacto positivo nas organizações que servimos.</p>
-          </div>
+      <div class="reveal d1">
+        <p style="color:rgba(255,255,255,.75);font-size:1.05rem;line-height:1.9">Potenciar a competitividade sustentável de organizações em África, aplicando inovação organizacional que não só eleva a eficiência dos nossos clientes, mas também regenera o capital humano, social e o ambiente onde actuamos.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== VALORES ===================== -->
+<section class="pad" style="background:var(--paper)">
+  <div class="wrap">
+    <div class="sec-head reveal" style="text-align:center;margin-bottom:56px">
+      <span class="eyebrow center">Valores</span>
+      <h2>Os princípios que nos orientam.</h2>
+    </div>
+    <div class="values-grid" style="grid-template-columns:repeat(5,1fr)">
+      <div class="value-card reveal">
+        <div class="value-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
         </div>
-        <div class="mission-item">
-          <span class="mission-num">02</span>
-          <div>
-            <h4>Proposta de Valor</h4>
-            <p>Combinamos o conhecimento profundo do mercado local com as melhores práticas internacionais, oferecendo soluções personalizadas e accionáveis.</p>
-          </div>
+        <h3>Integridade</h3>
+      </div>
+      <div class="value-card reveal d1">
+        <div class="value-icon">
+          <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
         </div>
-        <div class="mission-item">
-          <span class="mission-num">03</span>
-          <div>
-            <h4>Abordagem</h4>
-            <p>Trabalhamos em estreita colaboração com os nossos clientes, entendendo o seu contexto único antes de propor qualquer solução.</p>
-          </div>
+        <h3>Inovação</h3>
+      </div>
+      <div class="value-card reveal d2">
+        <div class="value-icon">
+          <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14M22 4L12 14.01l-3-3"/></svg>
         </div>
+        <h3>Resultado</h3>
+      </div>
+      <div class="value-card reveal d1">
+        <div class="value-icon">
+          <svg viewBox="0 0 24 24"><path d="M2 2a26.6 26.6 0 0 1 10 20c.9-6.82 1.5-9.5 4-14M16 8c.5 1 .5 2.5 0 4M12.89 10.33a7 7 0 0 1 9.11-4"/></svg>
+        </div>
+        <h3>Sustentabilidade</h3>
+      </div>
+      <div class="value-card reveal d2">
+        <div class="value-icon">
+          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h3>Pessoas</h3>
       </div>
     </div>
   </div>
