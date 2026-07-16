@@ -48,7 +48,7 @@
     "url": "/consultoria/team-building/"
   },
   {
-    "title": "contactos",
+    "title": "Contacto — AON Manancial Consulting",
     "url": "/contatos/"
   },
   {
@@ -144,11 +144,15 @@
     "url": "/formacao/o-que-e-formacao/"
   },
   {
+    "title": "Formações — AON Manancial Consulting",
+    "url": "/formacoes/"
+  },
+  {
     "title": "Forms",
     "url": "/forms.html/"
   },
   {
-    "title": "OFCONSULTORES – Formação e Consultoria",
+    "title": "AON Manancial Consulting — A nascente do valor",
     "url": "/"
   },
   {
@@ -188,6 +192,10 @@
     "url": "/ofconsultores/valores/"
   },
   {
+    "title": "Perspectivas — AON Manancial Consulting",
+    "url": "/perspectivas/"
+  },
+  {
     "title": "Pesquisa",
     "url": "/pesquisa/"
   },
@@ -204,8 +212,16 @@
     "url": "/publicacoes/"
   },
   {
+    "title": "Quem Somos — AON Manancial Consulting",
+    "url": "/quem-somos/"
+  },
+  {
     "title": "Recrutamento &amp; Seleção",
     "url": "/recrutamento-selecao/"
+  },
+  {
+    "title": "Serviços — AON Manancial Consulting",
+    "url": "/servicos/"
   },
   {
     "title": "Termos &amp; condições",

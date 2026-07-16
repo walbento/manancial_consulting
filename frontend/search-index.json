@@ -61,8 +61,8 @@
   },
   {
     "url": "/contatos/",
-    "title": "contactos",
-    "excerpt": "contactos Aguardamos pelo seu contacto! MORADA Rua Fernando Lopes Graça 15A 1600-067 LISBOA | PORTUGAL CONTACTOS (+351) 21 754 0451 (+351) 963 009 977 EMAIL geral@ofconsultores.com DEIXE-NOS O SEU CONTACTO Peça-nos informações sobre cursos específicos ou outros serviços. Estamos ao dispor para o que necessitar. Não preencher: Aceito os Termos &amp; Condições e Política de Privacidade"
+    "title": "Contacto — AON Manancial Consulting",
+    "excerpt": ""
   },
   {
     "url": "/cursos/auditoria/",
@@ -180,14 +180,19 @@
     "excerpt": "O que é a formação OFCONSULTORES &gt; Formação &gt; O que é a formação Formação A Formação é estratégica para o desenvolvimento e sucesso de uma Organização. A Formação é o meio privilegiado para: desenvolver conhecimentos e competências valorizar as Pessoas proporcionar mudanças e transformar aumentar a produtividade gerar satisfação melhorar o ambiente de trabalho potenciar boas práticas A forma"
   },
   {
+    "url": "/formacoes/",
+    "title": "Formações — AON Manancial Consulting",
+    "excerpt": ""
+  },
+  {
     "url": "/forms.html/",
     "title": "Forms",
     "excerpt": ""
   },
   {
     "url": "/",
-    "title": "OFCONSULTORES – Formação e Consultoria",
-    "excerpt": "Somos uma Empresa disponível para escutar as necessidades da sua Organização e capacitada para dar vida e existência aos seus sonhos. o seu sucesso é o nosso sucesso saber sobre cursos &nbsp; saber sobre consultoria &nbsp; walt disney \"Podes sonhar, criar, desenhar e construir o lugar mais maravilhoso do Mundo, mas precisas de Pessoas para converter o sonho em realidade.\" lideramos a transformação"
+    "title": "AON Manancial Consulting — A nascente do valor",
+    "excerpt": ""
   },
   {
     "url": "/obrigado/",
@@ -235,6 +240,11 @@
     "excerpt": "Valores OFCONSULTORES &gt; OFCONSULTORES &gt; Valores Os nossos Valores são Proximidade e Presença Somos Próximos dos nossos Clientes e estamos sempre Presentes Por sermos próximos, conhecemos o modelo de negócio, o Capital Humano, as atividades desenvolvidas, a cultura, os sonhos e ambições dos nossos Cliente, como se fossem nossos. Por isso, criamos soluções taylor made para cada Cliente e estam"
   },
   {
+    "url": "/perspectivas/",
+    "title": "Perspectivas — AON Manancial Consulting",
+    "excerpt": ""
+  },
+  {
     "url": "/pesquisa/",
     "title": "Pesquisa",
     "excerpt": ""
@@ -255,9 +265,19 @@
     "excerpt": "Publicações OFCONSULTORES &gt; Publicações Publicações Liderança – A Prática da Liderança. A Liderança na Prática Este livro destina-se a todas as pessoas que têm a responsabilidade de gerir e liderar equipas e que, neste contexto, pretendem aperfeiçoar o seu desempenho. O sucesso do líder advém do reconhecimento da eficácia e eficiência do seu trabalho e da qualidade da relação com os seus colabo"
   },
   {
+    "url": "/quem-somos/",
+    "title": "Quem Somos — AON Manancial Consulting",
+    "excerpt": ""
+  },
+  {
     "url": "/recrutamento-selecao/",
     "title": "Recrutamento &amp; Seleção",
     "excerpt": "Recrutamento &amp; Seleção OFCONSULTORES &gt; Recrutamento &amp; Seleção Recrutamento e seleção recrutamento O Recrutamento é um dos maiores investimentos que uma Empresa / Organização pode fazer no presente, para melhor preparar o futuro. O recrutamento é o primeiro passo para ter as melhores Pessoas, as mais qualificadas e com mais potencial para fazer a Empresa / Organização crescer, ser eficie"
+  },
+  {
+    "url": "/servicos/",
+    "title": "Serviços — AON Manancial Consulting",
+    "excerpt": ""
   },
   {
     "url": "/termos-condicoes/",
