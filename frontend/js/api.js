@@ -1,6 +1,7 @@
 /**
  * API client — Fase 1: JSON local em /data/
  * Fase 2: substituir por endpoints PHP em /api/
+ * fetch
  */
 (function (global) {
   const USE_LOCAL_DATA = true;
