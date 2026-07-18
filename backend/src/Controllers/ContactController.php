@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . '../../config/cnn.php';
 require_once __DIR__ . '/../Models/Contacto.php';
 
 class ContactController
