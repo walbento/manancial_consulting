@@ -159,6 +159,14 @@ function shellInnerPage(html) {
   html = html.replace(/<link[^>]*fonts\.gstatic\.com[^>]*>\n?/g, '');
   html = html.replace(/<script src="\/js\/reference\.js"[^>]*><\/script>\n?/g, '');
 
+  // Remover TODAS as ocorrências prévias de api.js/home.js (em qualquer posição) para
+  // garantir idempotência — evita duplicados quando o build corre sobre uma página
+  // já "shelled" numa execução anterior. Guarda se a página já usava api.js (páginas
+  // com formulário) para não o injectar em páginas que nunca precisaram dele.
+  const hadApiJs = html.includes('/js/api.js');
+  html = html.replace(/<script src="\/js\/api\.js"[^>]*><\/script>\n?/g, '');
+  html = html.replace(/<script src="\/js\/home\.js"[^>]*><\/script>\n?/g, '');
+
   // Remover versão anterior do bloco de CSS (para forçar actualização)
   html = html.replace(/<style>\/\* mc-shell-v\d+ \*\/[\s\S]*?<\/style>\n?/g, '');
 
@@ -187,18 +195,20 @@ function shellInnerPage(html) {
     html = html.replace(/(<body[^>]*>)/i, `$1\n${HEADER}`);
   }
 
-  // Substituir footer existente ou injectar
+  // FOOTER sem o script final — os scripts são geridos separadamente abaixo (idempotente)
+  const footerOnly = FOOTER.replace(/\n\n<script[^>]*><\/script>$/, '');
+
+  // Substituir footer existente (com ou sem marcador de comentário) ou injectar
   if (html.includes('class="foot-top"') || html.includes('class="foot-quote"')) {
-    html = html.replace(/<!-- ={3,} FOOTER ={3,} -->\s*<footer[\s\S]*?<\/footer>\s*\n?<script src="\/js\/[^"]+\.js"[^>]*><\/script>/, FOOTER);
-    // fallback: replace apenas o bloco footer sem o script tag
-    if (!html.includes('foot-bottom')) {
-      html = html.replace(/<footer[\s\S]*?<\/footer>/, FOOTER.replace(/\n\n<script[^>]*><\/script>$/, ''));
-    }
+    html = html.replace(/(<!-- ={3,} FOOTER ={3,} -->\s*)?<footer[\s\S]*?<\/footer>/, footerOnly);
   } else {
-    html = html.replace('</body>', `${FOOTER}\n</body>`);
+    html = html.replace('</body>', `${footerOnly}\n</body>`);
   }
 
-  // Garantir home.js no final do body
+  // Garantir api.js (só se já era usado antes) e home.js, uma única vez cada, no final do body
+  if (hadApiJs && !html.includes('/js/api.js')) {
+    html = html.replace('</body>', `<script src="/js/api.js" defer></script>\n</body>`);
+  }
   if (!html.includes('/js/home.js')) {
     html = html.replace('</body>', `<script src="/js/home.js" defer></script>\n</body>`);
   }
