@@ -3,7 +3,7 @@
 Site estático da **Manancial Consulting** (assessoria financeira, auditoria e contabilidade), baseado em HTML, CSS e JavaScript, com deploy na **Netlify**.
 
 > **Front end:** Html, CSS, JS  
-> **Back end:** backoffice em PHP + PostgreSQL (`backend/`)
+> **Back end:** Netlify Functions (Node.js) + PostgreSQL (`netlify/functions/`)
 
 ---
 
@@ -23,8 +23,7 @@ manancial_consulting/
 │   ├── servicos/             # Página Serviços
 │   └── contatos/             # Contacto
 │
-├── backend/                  # Reservado — PHP + API (fase 2)
-├── database/                 # Reservado — migrations PostgreSQL (fase 2)
+├── netlify/functions/         # API serverless (Node.js + PostgreSQL) — ex.: contact.js
 ├── site/                     # Espelho original (referência técnica)
 ├── scripts/                  # Scripts de build e migração
 ├── netlify.toml              # Configuração de deploy
@@ -100,9 +99,10 @@ Se não vires alterações, faz hard refresh: `Cmd+Shift+R` (Mac) ou `Ctrl+Shift
 
 ### Formulário de contacto
 
-- Configurado para **Netlify Forms** (`data-netlify="true"`)
-- Página de sucesso: `/obrigado/`
-- Após deploy: Netlify Dashboard → **Forms** → configurar notificações por email
+- Envio via `fetch` para `/api/contact`, que a Netlify redireciona para a function `netlify/functions/contact.js`
+- A function valida os campos e grava na tabela `contactos` (PostgreSQL) via driver `pg`
+- Credenciais da base de dados: definir como variáveis de ambiente no Netlify (`DB_HOST`, `DB_PORT`, `DB_NAME`, `DB_USER`, `DB_PASS`) em **Site settings → Environment variables**
+- Teste local: `npx netlify dev` (expõe a function em `/api/contact` sem imprimir credenciais no terminal)
 
 ---
 

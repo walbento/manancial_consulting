@@ -1,10 +1,9 @@
 /**
  * API client — Fase 1: JSON local em /data/
- * Fase 2: substituir por endpoints PHP em /api/
- * fetch
+ * Fase 2: endpoints via Netlify Functions em /api/ (Node + PostgreSQL)
  */
 (function (global) {
-  const USE_LOCAL_DATA = true;
+  const USE_LOCAL_DATA = false;
   const API_BASE = global.API_URL || '/api';
 
   async function fetchLocal(path) {

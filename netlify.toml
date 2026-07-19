@@ -1,6 +1,12 @@
 [build]
   publish = "frontend"
   command = "node scripts/migrate-to-frontend.mjs && node scripts/build-reference.mjs"
+  functions = "netlify/functions"
+
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
 
 [[redirects]]
   from = "/wp/*"
