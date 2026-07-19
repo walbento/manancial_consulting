@@ -101,8 +101,8 @@ Se não vires alterações, faz hard refresh: `Cmd+Shift+R` (Mac) ou `Ctrl+Shift
 
 - Envio via `fetch` para `/api/contact`, que a Netlify redireciona para a function `netlify/functions/contact.js`
 - A function valida os campos e grava na tabela `contactos` (PostgreSQL) via driver `pg`
-- Credenciais da base de dados: definir como variáveis de ambiente no Netlify (`DB_HOST`, `DB_PORT`, `DB_NAME`, `DB_USER`, `DB_PASS`) em **Site settings → Environment variables**
-- Teste local: `npx netlify dev` (expõe a function em `/api/contact` sem imprimir credenciais no terminal)
+- Credenciais da base de dados: **obrigatórias** como variáveis de ambiente no Netlify (`DB_HOST`, `DB_PORT`, `DB_NAME`, `DB_USER`, `DB_PASS`) em **Site settings → Environment variables** — a function não tem valores por defeito e falha em runtime se alguma variável estiver em falta (evita credenciais expostas no código/Git)
+- Teste local: `npx netlify dev` (expõe a function em `/api/contact`); cria um `.env` local (não commitado) com as mesmas variáveis
 
 ---
 
