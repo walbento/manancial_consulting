@@ -56,7 +56,7 @@ const FIELD_LIMITS = {
   email: 200,
   telefone: 13,
   empresa: 100,
-  nif: 20,
+  nif: 14,
   cargo: 100,
   assunto: 200,
   mensagem: 500,
