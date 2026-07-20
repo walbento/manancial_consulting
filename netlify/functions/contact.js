@@ -51,8 +51,28 @@ function getPool() {
   return pool;
 }
 
+const FIELD_LIMITS = {
+  nome: 100,
+  email: 200,
+  telefone: 15,
+  empresa: 100,
+  nif: 20,
+  cargo: 100,
+  assunto: 200,
+  mensagem: 500,
+};
+
+const TIPO_EMPRESA_ALLOWED = new Set(['LDA', 'SA', 'SU', '']);
+
 function isValidEmail(email) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+
+/** Aceita 9XXXXXXXX ou 2XXXXXXXX, com +244 opcional */
+function isValidTelefone(telefone) {
+  if (!telefone) return true;
+  const normalized = telefone.replace(/[\s\-]/g, '');
+  return /^(\+244)?[29]\d{8}$/.test(normalized);
 }
 
 function getOrigin(event) {
@@ -88,7 +108,7 @@ export const handler = async (event) => {
   const email = String(input.email || '').trim();
   const empresa = String(input.empresa || '').trim();
   const nif = String(input.nif || '').trim();
-  const telefone = String(input.telefone || '').trim();
+  const telefone = String(input.telefone || '').trim().replace(/[\s\-]/g, '');
   const cargo = String(input.cargo || '').trim();
   const assunto = String(input.assunto || '').trim();
   const mensagem = String(input.mensagem || '').trim();
@@ -101,6 +121,28 @@ export const handler = async (event) => {
   if (!nif) erros.push('NIF é obrigatório.');
   if (!mensagem) erros.push('Mensagem é obrigatória.');
   if (email && !isValidEmail(email)) erros.push('Email inválido.');
+  if (telefone && !isValidTelefone(telefone)) {
+    erros.push('Telefone inválido. Use 9 ou 2 seguido de 8 dígitos, com +244 opcional.');
+  }
+  if (!TIPO_EMPRESA_ALLOWED.has(tipo)) {
+    erros.push('Tipo de empresa inválido.');
+  }
+
+  const lengthChecks = [
+    ['nome', nome],
+    ['email', email],
+    ['telefone', telefone],
+    ['empresa', empresa],
+    ['nif', nif],
+    ['cargo', cargo],
+    ['assunto', assunto],
+    ['mensagem', mensagem],
+  ];
+  for (const [field, value] of lengthChecks) {
+    if (value.length > FIELD_LIMITS[field]) {
+      erros.push(`${field} excede o limite de ${FIELD_LIMITS[field]} caracteres.`);
+    }
+  }
 
   if (erros.length) {
     return json(422, { error: erros.join(' ') });

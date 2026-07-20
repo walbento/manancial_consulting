@@ -122,31 +122,31 @@ footer ul li{color:rgba(255,255,255,.62)!important}
           <div class="form-row">
             <div class="field">
               <label for="cf-nome">Nome</label>
-              <input type="text" id="cf-nome" name="nome" placeholder="O seu nome" required>
+              <input type="text" id="cf-nome" name="nome" placeholder="O seu nome" required maxlength="100" autocomplete="name">
             </div>
             <div class="field">
               <label for="cf-email">Email</label>
-              <input type="email" id="cf-email" name="email" placeholder="voce@empresa.co.ao" required>
+              <input type="email" id="cf-email" name="email" placeholder="voce@empresa.co.ao" required maxlength="200" autocomplete="email">
             </div>
           </div>
           <div class="form-row">
             <div class="field">
               <label for="cf-telefone">Telefone</label>
-              <input type="tel" id="cf-telefone" name="telefone" placeholder="+244 9XX XXX XXX">
+              <input type="tel" id="cf-telefone" name="telefone" placeholder="+244 9XX XXX XXX" maxlength="15" inputmode="tel" autocomplete="tel" pattern="^(\+244)?[29]\d{8}$" title="9 dígitos (começando por 9 ou 2), com +244 opcional">
             </div>
             <div class="field">
               <label for="cf-empresa">Empresa</label>
-              <input type="text" id="cf-empresa" name="empresa" placeholder="Nome da empresa" required>
+              <input type="text" id="cf-empresa" name="empresa" placeholder="Nome da empresa" required maxlength="100" autocomplete="organization">
             </div>
           </div>
           <div class="form-row">
             <div class="field">
               <label for="cf-nif">NIF</label>
-              <input type="text" id="cf-nif" name="nif" placeholder="NIF da empresa" required>
+              <input type="text" id="cf-nif" name="nif" placeholder="NIF da empresa" required maxlength="20">
             </div>
             <div class="field">
               <label for="cf-cargo">Cargo</label>
-              <input type="text" id="cf-cargo" name="cargo" placeholder="O seu cargo (opcional)">
+              <input type="text" id="cf-cargo" name="cargo" placeholder="O seu cargo (opcional)" maxlength="100" autocomplete="organization-title">
             </div>
           </div>
           <div class="form-row">
@@ -162,11 +162,12 @@ footer ul li{color:rgba(255,255,255,.62)!important}
           </div>
           <div class="field">
             <label for="cf-assunto">Assunto</label>
-            <input type="text" id="cf-assunto" name="assunto" placeholder="Sobre o que quer falar?" required>
+            <input type="text" id="cf-assunto" name="assunto" placeholder="Sobre o que quer falar?" required maxlength="200">
           </div>
           <div class="field">
             <label for="cf-mensagem">Mensagem</label>
-            <textarea id="cf-mensagem" name="mensagem" placeholder="Escreva a sua mensagem..." required></textarea>
+            <textarea id="cf-mensagem" name="mensagem" placeholder="Escreva a sua mensagem..." required maxlength="500" rows="6"></textarea>
+            <div class="char-count" id="cf-mensagem-count" aria-live="polite"><span id="cf-mensagem-used">0</span> / 500</div>
           </div>
           <div class="field">
             <label style="display:flex;align-items:flex-start;gap:8px;text-transform:none;letter-spacing:normal;font-weight:400;color:var(--ink)">

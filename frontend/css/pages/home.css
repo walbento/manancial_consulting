@@ -411,6 +411,9 @@
   }
   .field input:focus,.field textarea:focus,.field select:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(184,152,94,.16)}
   .field textarea{resize:vertical;min-height:150px;line-height:1.6}
+  .char-count{margin-top:8px;font-size:.78rem;color:var(--ink-soft);text-align:right;letter-spacing:.02em}
+  .char-count.near-limit{color:#b45309}
+  .char-count.at-limit{color:#991b1b;font-weight:600}
   .form-row{display:grid;grid-template-columns:1fr 1fr;gap:20px}
   .alert{
     display:flex;align-items:flex-start;gap:12px;

@@ -48,8 +48,37 @@
   if(contactForm){
     const formMsg=document.getElementById('formMsg');
     const submitBtn=contactForm.querySelector('[type="submit"]');
+    const msgField=document.getElementById('cf-mensagem');
+    const msgUsed=document.getElementById('cf-mensagem-used');
+    const msgCount=document.getElementById('cf-mensagem-count');
+    const telField=document.getElementById('cf-telefone');
+    const MSG_MAX=500;
+
+    function updateMsgCount(){
+      if(!msgField||!msgUsed) return;
+      const len=msgField.value.length;
+      msgUsed.textContent=String(len);
+      if(msgCount){
+        msgCount.classList.toggle('near-limit', len>=MSG_MAX*0.9 && len<MSG_MAX);
+        msgCount.classList.toggle('at-limit', len>=MSG_MAX);
+      }
+    }
+
+    if(msgField){
+      msgField.addEventListener('input', updateMsgCount);
+      updateMsgCount();
+    }
+
+    // Normaliza telefone (remove espaços) antes da validação HTML5 pattern
+    if(telField){
+      telField.addEventListener('blur', ()=>{
+        telField.value=telField.value.replace(/[\s\-]/g,'');
+      });
+    }
+
     contactForm.addEventListener('submit', async (e)=>{
       e.preventDefault();
+      if(telField) telField.value=telField.value.replace(/[\s\-]/g,'');
       if(!contactForm.checkValidity()){contactForm.reportValidity();return;}
       const fd=new FormData(contactForm);
       const payload={};
@@ -63,6 +92,7 @@
         formMsg.classList.add('ok');
         formMsg.hidden=false;
         contactForm.reset();
+        updateMsgCount();
       }catch(err){
         formMsg.textContent='Não foi possível enviar a mensagem. Tente novamente ou contacte-nos por email.';
         formMsg.classList.add('err');
