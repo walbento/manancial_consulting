@@ -54,9 +54,9 @@ function getPool() {
 const FIELD_LIMITS = {
   nome: 100,
   email: 200,
-  telefone: 13,
+  telefone: 15,
   empresa: 100,
-  nif: 14,
+  nif: 20,
   cargo: 100,
   assunto: 200,
   mensagem: 500,
