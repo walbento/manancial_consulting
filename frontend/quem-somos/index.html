@@ -5,6 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Quem Somos — AON Manancial Consulting</title>
 <meta name="description" content="Conheça a AON Manancial Consulting — a nossa missão, os nossos valores e a equipa que trabalha diariamente para criar valor nas organizações angolanas.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/css/pages/home.css">
 <link rel="icon" href="/assets/images/logo-manancial.png" type="image/png">
 <style>
@@ -24,6 +27,7 @@
   .about-visual-inner p{color:rgba(255,255,255,.75);font-size:1rem;line-height:1.7;margin-bottom:0}
 
   .values-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:rgba(18,58,94,.1);border:1px solid rgba(18,58,94,.1)}
+  .values-grid--5{grid-template-columns:repeat(5,1fr)}
   .value-card{background:var(--white);padding:48px 40px;transition:background .35s}
   .value-card:hover{background:var(--paper)}
   .value-icon{width:48px;height:48px;border-radius:50%;background:var(--mist);display:flex;align-items:center;justify-content:center;margin-bottom:28px;transition:background .35s}
@@ -49,17 +53,17 @@
   .cta-actions{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
 
   @media(max-width:1100px){
-    .values-grid[style*="repeat(5"]{grid-template-columns:repeat(3,1fr)!important}
+    .values-grid--5{grid-template-columns:repeat(3,1fr)}
   }
   @media(max-width:960px){
     .about-grid{grid-template-columns:1fr;gap:48px}
-    .values-grid{grid-template-columns:1fr 1fr}
+    .values-grid,.values-grid--5{grid-template-columns:1fr 1fr}
     .mission-inner{grid-template-columns:1fr;gap:40px}
     .about-visual-inner{padding:40px 32px}
     .mission-band{padding:72px 0}
   }
   @media(max-width:640px){
-    .values-grid{grid-template-columns:1fr 1fr!important}
+    .values-grid,.values-grid--5{grid-template-columns:1fr 1fr}
     .about-stat-grid{grid-template-columns:1fr 1fr}
     .about-visual-inner{padding:30px 22px}
     .about-stat b{font-size:2.4rem}
@@ -67,9 +71,10 @@
     .cta-actions{flex-direction:column;align-items:center}
     .cta-actions .btn{width:100%;justify-content:center}
     .mission-band{padding:56px 0}
+    .cta-strip{padding:72px 0}
   }
   @media(max-width:400px){
-    .values-grid{grid-template-columns:1fr!important}
+    .values-grid,.values-grid--5{grid-template-columns:1fr}
   }
 </style>
 <style>/* mc-shell-v2 */
@@ -135,6 +140,7 @@ footer ul li{color:rgba(255,255,255,.62)!important}
     <details class="mm-dropdown">
       <summary>O que fazemos <svg class="care" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></summary>
       <a href="/formacoes/">Formações</a>
+      <a href="/servicos/">Serviços</a>
     </details>
     <a href="/servicos/">Serviços</a>
     <a href="/perspectivas/">Perspectivas</a>
@@ -193,7 +199,7 @@ footer ul li{color:rgba(255,255,255,.62)!important}
       <span class="eyebrow center">Valores</span>
       <h2>Os princípios que nos orientam.</h2>
     </div>
-    <div class="values-grid" style="grid-template-columns:repeat(5,1fr)">
+    <div class="values-grid values-grid--5">
       <div class="value-card reveal">
         <div class="value-icon">
           <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>

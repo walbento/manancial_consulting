@@ -5,6 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Perspectivas — AON Manancial Consulting</title>
 <meta name="description" content="Análises, relatórios e pontos de vista da AON Manancial Consulting sobre fiscalidade, gestão e economia angolana.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/css/pages/home.css">
 <link rel="icon" href="/assets/images/logo-manancial.png" type="image/png">
 <style>
@@ -67,18 +70,25 @@
   }
   @keyframes cardIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
 
-  @media(max-width:1024px){.articles-grid{grid-template-columns:1fr 1fr}}
-  @media(max-width:760px){
+  @media(max-width:960px){
+    .articles-grid{grid-template-columns:1fr 1fr}
+  }
+  @media(max-width:640px){
     .articles-grid{grid-template-columns:1fr}
     .featured-article{grid-template-columns:1fr}
     .featured-thumb{min-height:200px}
     .featured-body{padding:28px 24px}
     .newsletter-inner{grid-template-columns:1fr;gap:36px}
     .newsletter-form{flex-direction:column}
-    .filter-bar{gap:8px}
-    .filter-btn{padding:8px 14px;font-size:.76rem}
+    .newsletter-form .btn{width:100%;justify-content:center;white-space:normal}
+    .filter-bar{
+      flex-wrap:nowrap;overflow-x:auto;gap:8px;padding-bottom:6px;
+      -webkit-overflow-scrolling:touch;scrollbar-width:none;
+    }
+    .filter-bar::-webkit-scrollbar{display:none}
+    .filter-btn{padding:10px 14px;font-size:.76rem;flex-shrink:0;min-height:44px}
   }
-  @media(max-width:480px){
+  @media(max-width:400px){
     .article-body{padding:22px 20px 26px}
     .featured-body{padding:22px 18px}
   }
@@ -146,6 +156,7 @@ footer ul li{color:rgba(255,255,255,.62)!important}
     <details class="mm-dropdown">
       <summary>O que fazemos <svg class="care" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></summary>
       <a href="/formacoes/">Formações</a>
+      <a href="/servicos/">Serviços</a>
     </details>
     <a href="/servicos/">Serviços</a>
     <a href="/perspectivas/">Perspectivas</a>

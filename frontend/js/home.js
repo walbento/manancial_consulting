@@ -17,8 +17,33 @@
   }
   // Mobile menu
   const burger=document.getElementById('burger'),mm=document.getElementById('mm');
-  burger.addEventListener('click',()=>mm.classList.toggle('open'));
-  mm.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>mm.classList.remove('open')));
+  if(burger&&mm){
+    let overlay=document.querySelector('.mm-overlay');
+    if(!overlay){
+      overlay=document.createElement('div');
+      overlay.className='mm-overlay';
+      overlay.setAttribute('aria-hidden','true');
+      document.body.appendChild(overlay);
+    }
+
+    function setMenuOpen(open){
+      mm.classList.toggle('open',open);
+      overlay.classList.toggle('open',open);
+      document.body.classList.toggle('mm-open',open);
+      burger.setAttribute('aria-expanded',String(open));
+      burger.setAttribute('aria-controls','mm');
+      overlay.setAttribute('aria-hidden',String(!open));
+    }
+
+    burger.setAttribute('aria-expanded','false');
+    burger.setAttribute('aria-controls','mm');
+    burger.addEventListener('click',()=>setMenuOpen(!mm.classList.contains('open')));
+    overlay.addEventListener('click',()=>setMenuOpen(false));
+    mm.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>setMenuOpen(false)));
+    document.addEventListener('keydown',(e)=>{
+      if(e.key==='Escape'&&mm.classList.contains('open')) setMenuOpen(false);
+    });
+  }
   // Nav dropdown (O que fazemos)
   document.querySelectorAll('.has-dropdown > a').forEach(trigger=>{
     trigger.addEventListener('click',(e)=>{

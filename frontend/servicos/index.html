@@ -5,6 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Serviços — AON Manancial Consulting</title>
 <meta name="description" content="Auditoria & Assurance, Fiscalidade, Consultoria de Gestão e Advisory & Transacções — as quatro áreas de serviço da AON Manancial Consulting em Angola.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/css/pages/home.css">
 <link rel="icon" href="/assets/images/logo-manancial.png" type="image/png">
 <style>
@@ -74,7 +77,7 @@
   }
   .diff-card span{font-size:.82rem;color:var(--ink-soft);line-height:1.5}
 
-  @media(max-width:900px){
+  @media(max-width:960px){
     .area-row{grid-template-columns:1fr;gap:36px;padding:56px 0}
     .area-left p{max-width:100%}
     .areas-intro{padding:72px 0 48px}
@@ -84,6 +87,11 @@
     .diff-grid{grid-template-columns:1fr 1fr}
     .diff-card{padding:28px 18px}
     .diff-card b{font-size:2rem}
+    .areas-intro{padding:64px 0 40px}
+    .svc-cta-band{padding:72px 0!important}
+  }
+  @media(max-width:400px){
+    .diff-grid{grid-template-columns:1fr}
   }
 </style>
 <style>/* mc-shell-v2 */
@@ -149,6 +157,7 @@ footer ul li{color:rgba(255,255,255,.62)!important}
     <details class="mm-dropdown">
       <summary>O que fazemos <svg class="care" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></summary>
       <a href="/formacoes/">Formações</a>
+      <a href="/servicos/">Serviços</a>
     </details>
     <a href="/servicos/">Serviços</a>
     <a href="/perspectivas/">Perspectivas</a>
@@ -283,7 +292,7 @@ footer ul li{color:rgba(255,255,255,.62)!important}
 </section>
 
 <!-- ===================== CTA ===================== -->
-<section class="reveal" style="padding:100px 0;text-align:center">
+<section class="reveal svc-cta-band" style="padding:100px 0;text-align:center">
   <div class="wrap">
     <span class="eyebrow center">Próximo passo</span>
     <h2 style="font-size:clamp(2rem,3.6vw,2.9rem);margin-bottom:18px">Qual é o seu desafio?</h2>

@@ -154,13 +154,19 @@
   .nav-btn:hover{background:var(--gold-soft);border-color:var(--gold-soft)}
   header.solid .nav-btn{background:var(--navy);color:#fff;border-color:var(--navy)}
   header.solid .nav-btn:hover{background:var(--navy-soft);border-color:var(--navy-soft)}
-  .burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px}
+  .burger{display:none;flex-direction:column;justify-content:center;gap:5px;background:none;border:none;cursor:pointer;padding:12px;min-width:44px;min-height:44px}
   .mobile-menu{display:none}
   .burger span{width:24px;height:2px;background:#fff;transition:.3s}
   header.solid .burger span{background:var(--navy-deep)}
+  body.mm-open{overflow:hidden}
+  .mm-overlay{
+    display:none;position:fixed;inset:82px 0 0 0;z-index:98;
+    background:rgba(8,25,46,.35);opacity:0;pointer-events:none;transition:opacity .3s var(--ease);
+  }
+  .mm-overlay.open{display:block;opacity:1;pointer-events:auto}
 
   /* ---------- Hero ---------- */
-  .hero{position:relative;min-height:100vh;background:#0a1a34;overflow:hidden}
+  .hero{position:relative;min-height:100vh;min-height:100dvh;background:#0a1a34;overflow:hidden}
   .hero-slide{position:absolute;inset:0;z-index:0;background-position:right center;background-size:cover;
     background-repeat:no-repeat;opacity:0;animation:heroFade 9s var(--ease) infinite both}
   .hero-slide.s1{background-image:url('/assets/images/hero-slide-1.jpg');animation-delay:0s}
@@ -356,13 +362,17 @@
     .cta-box{padding:44px 26px}
     .svc-grid,.ind-grid,.ins-grid,.stat-row{grid-template-columns:1fr}
     .foot-top{grid-template-columns:1fr}
-    .hero-stats{gap:32px}
     .foot-bottom{flex-direction:column;align-items:flex-start}
+    .eyebrow{letter-spacing:.18em;gap:10px;font-size:.68rem}
+    .eyebrow::before,.eyebrow.center::after{width:22px}
+  }
+  @media(max-width:480px){
+    .brand .bt{display:none}
   }
   @media(max-width:400px){
     .intro-stats{grid-template-columns:1fr;gap:24px}
     .cta-actions{flex-direction:column;align-items:stretch}
-    .cta-actions .btn{justify-content:center}
+    .cta-actions .btn{justify-content:center;width:100%}
   }
   @media(prefers-reduced-motion:reduce){
     *{animation:none!important;transition:none!important}
@@ -434,6 +444,8 @@
     .info-card,.form-card{padding:40px 26px}
     .page-hero{padding:130px 0 56px}
     .page-hero p{font-size:.95rem}
+    .field input,.field textarea,.field select{font-size:16px}
+    .form-card .btn{width:100%;justify-content:center}
   }
 
   /* ========== Inner pages — shared responsive ========== */
@@ -461,10 +473,15 @@
   .form-nav-inner a:hover,.form-nav-inner a.active{color:var(--navy);border-bottom-color:var(--navy)}
 
   @media(max-width:960px){
-    .svc-nav,.form-nav{top:72px}
-    .svc-nav-inner a,.form-nav-inner a{padding:14px 18px;font-size:.74rem}
+    .svc-nav-inner a,.form-nav-inner a{padding:14px 18px;font-size:.74rem;min-height:44px}
   }
   @media(max-width:640px){
-    .svc-nav,.form-nav{top:64px}
     .svc-nav-inner a,.form-nav-inner a{padding:12px 14px;letter-spacing:.08em}
+  }
+
+  /* Hover effects only for devices that support hover (avoid sticky hover on touch) */
+  @media (hover: none){
+    .svc:hover,.ind:hover,.ins:hover,.value-card:hover,.area-card:hover,.modal-card:hover,.article-card:hover{
+      transform:none;box-shadow:none;
+    }
   }
