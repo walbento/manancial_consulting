@@ -370,7 +370,7 @@
     .brand .bt{display:none}
   }
   @media(max-width:400px){
-    .intro-stats{grid-template-columns:1fr;gap:24px}
+    .intro-stats{grid-template-columns:1fr;gap:24px;text-align:center}
     .cta-actions{flex-direction:column;align-items:stretch}
     .cta-actions .btn{justify-content:center;width:100%}
   }
